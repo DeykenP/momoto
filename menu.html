@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú · Momoto Café</title>
-    <meta name="description" content="El menú de Momoto Café en Batahola Sur, Managua: espresso, V60, AeroPress, iced latte, Coffee Spritz y más.">
+    <meta name="description" content="El menú de Momoto Café en Managua: espresso bar caliente y helado, matcha, smoothies, mocktails, cócteles de autor, desayunos, paninis, hamburguesas, ensaladas y wraps.">
     <meta name="theme-color" content="#0b0b0b">
 
     <meta property="og:title" content="Menú · Momoto Café">
-    <meta property="og:description" content="Espresso, V60, AeroPress, iced latte y Coffee Spritz. Lunes a domingo, de 8 AM a 8 PM.">
+    <meta property="og:description" content="Espresso bar, matcha, smoothies, mocktails, cócteles, brunch y más. Batahola, Plaza Natura y Distrito Diseño.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_NI">
     <!-- Al publicar, cambiar por la URL absoluta: https://TU-DOMINIO/assets/img/og.jpg -->
@@ -30,10 +30,9 @@
 
 <a class="skip-link" href="#main">Saltar al contenido</a>
 
-<div class="strip" role="region" aria-label="Horario">
+<div class="strip" role="region" aria-label="Estado de las sucursales">
     <p class="strip-item" data-open-status hidden><span class="open-dot"></span><span data-open-text></span></p>
-    <p class="strip-item strip-item--hours">Lunes a domingo · 8 AM – 8 PM</p>
-    <p class="strip-item strip-item--wide">Batahola Sur · Managua</p>
+    <p class="strip-item strip-item--wide">Batahola · Plaza Natura · Distrito Diseño</p>
 </div>
 
 <header class="site-header" id="siteHeader">
@@ -88,38 +87,42 @@
     <div class="page-hero-content">
         <h1 class="page-hero-title" data-split-chars data-char-delay="110" data-char-start="150">Menú</h1>
         <span class="page-hero-script" data-write style="transition-delay: 0.7s" aria-hidden="true">hecho con calma</span>
-        <p class="page-hero-subtitle" data-reveal data-delay="4">Lunes a domingo · 8 AM – 8 PM</p>
+        <p class="page-hero-subtitle" data-reveal data-delay="4">Espresso bar · Brunch · Cócteles</p>
     </div>
 </section>
 
 <nav class="menu-nav" id="menuNav" aria-label="Secciones del menú">
-    <a href="#cafe" class="menu-nav-link" data-menu-nav="cafe">Café</a>
-    <a href="#casa" class="menu-nav-link" data-menu-nav="casa">De la casa</a>
-    <a href="#sin-cafe" class="menu-nav-link" data-menu-nav="sin-cafe">Sin café</a>
-    <a href="#acompanar" class="menu-nav-link" data-menu-nav="acompanar">Para acompañar</a>
+    <a href="#espresso" class="menu-nav-link" data-menu-nav="espresso">Espresso bar</a>
+    <a href="#matcha" class="menu-nav-link" data-menu-nav="matcha">Matcha</a>
+    <a href="#smoothies" class="menu-nav-link" data-menu-nav="smoothies">Smoothies</a>
+    <a href="#mocktails" class="menu-nav-link" data-menu-nav="mocktails">Mocktails</a>
+    <a href="#cocteles" class="menu-nav-link" data-menu-nav="cocteles">Cócteles</a>
+    <a href="#desayunos" class="menu-nav-link" data-menu-nav="desayunos">Desayunos</a>
+    <a href="#paninis" class="menu-nav-link" data-menu-nav="paninis">Paninis</a>
+    <a href="#hamburguesas" class="menu-nav-link" data-menu-nav="hamburguesas">Hamburguesas</a>
+    <a href="#ensaladas" class="menu-nav-link" data-menu-nav="ensaladas">Ensaladas y wraps</a>
+    <a href="#snacks" class="menu-nav-link" data-menu-nav="snacks">Snacks</a>
 </nav>
 
 <!-- ===========================================
-     MENÚ PRELIMINAR
-     Espresso, latte, V60, AeroPress, iced latte y Coffee Spritz aparecen
-     en los videos oficiales; el resto es de ejemplo. Falta confirmar el
-     menú completo y los precios. Para mostrar un precio, agregar debajo
-     de la descripción: <span class="menu-item-price">C$ 90</span>
+     CARTA (transcrita del menú oficial en PDF)
+     Para cambiar un precio o un producto, edita su <li class="menu-item">.
+     ★ = recomendado de la casa · hoja = vegetariano
      =========================================== -->
 <div class="menu-paper">
     <div class="menu-body">
 
         <p class="menu-intro" data-reveal>
             <span class="script">Bienvenidos</span>
-            Esto es lo que preparamos todos los días en Momoto.<br>Pregunta en barra por las recomendaciones del día.
+            Precios en córdobas. La disponibilidad puede variar según la sucursal.
+            <span class="menu-legend"><span aria-hidden="true">★</span> Recomendados de la casa</span>
         </p>
 
-        <!-- CAFÉ -->
-        <section class="menu-section" id="cafe" data-menu-section="cafe">
+        <!-- ESPRESSO BAR -->
+        <section class="menu-section" id="espresso" data-menu-section="espresso">
             <header class="menu-section-header">
-                <span class="menu-section-kicker" data-reveal>Nuestro</span>
-                <h2 class="menu-section-title" data-split-chars>Café</h2>
-                <p class="menu-section-subtitle" data-reveal data-delay="2">Espresso y métodos de filtrado</p>
+                <h2 class="menu-section-title" data-split-chars>Espresso bar</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Caliente y helado</p>
             </header>
 
             <!-- Datos tomados de la ficha de origen de la foto oficial -->
@@ -142,135 +145,871 @@
             </article>
 
             <div data-tabs>
-                <div class="menu-tabs" role="tablist" aria-label="Tipo de café">
-                    <button class="menu-tab is-active" role="tab" id="tab-calientes" aria-selected="true" aria-controls="panel-calientes" data-tab-hash="calientes">Calientes</button>
-                    <button class="menu-tab" role="tab" id="tab-frios" aria-selected="false" aria-controls="panel-frios" data-tab-hash="frios" tabindex="-1">Fríos</button>
+                <div class="menu-tabs" role="tablist" aria-label="Espresso bar">
+                    <button class="menu-tab is-active" role="tab" id="tab-caliente" aria-selected="true" aria-controls="panel-caliente" data-tab-hash="caliente calientes">Caliente</button>
+                    <button class="menu-tab" role="tab" id="tab-helado" aria-selected="false" aria-controls="panel-helado" data-tab-hash="helado frios" tabindex="-1">Helado</button>
                 </div>
 
-                <div class="menu-panel is-active" id="panel-calientes" role="tabpanel" aria-labelledby="tab-calientes">
+                <div class="menu-panel is-active" id="panel-caliente" role="tabpanel" aria-labelledby="tab-caliente">
                     <ul class="menu-list">
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Espresso</h3>
-                            <p class="menu-item-desc">Corto, intenso y aromático.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Espresso Doppio</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$90</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso doble: aproximadamente 50 g de café extraídos a presión.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Americano</h3>
-                            <p class="menu-item-desc">Espresso alargado con agua caliente.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Americano</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$75</span>
+                            </div>
+                            <p class="menu-item-desc">La intensidad del espresso con agua caliente.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Capuchino</h3>
-                            <p class="menu-item-desc">Espresso, leche vaporizada y espuma sedosa.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Cappuccino</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$110</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada y espuma de leche en proporciones iguales.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Latte</h3>
-                            <p class="menu-item-desc">Suave y cremoso, con arte latte.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$110</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">V60</h3>
-                            <p class="menu-item-desc">Filtrado a mano: una taza limpia, aromática y delicada.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Key Pie Latte <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$140</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche, coco y un toque de ralladura de limón.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">AeroPress</h3>
-                            <p class="menu-item-desc">Preparado al momento, con más cuerpo y dulzor.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Flat White <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$152</span>
+                            </div>
+                            <p class="menu-item-desc">La intensidad del doble espresso con la suavidad de la leche vaporizada.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Pana</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$93</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con crema batida.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Pana Latte <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$130</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada y crema batida.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Pana White Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$145</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada, chocolate blanco y crema batida.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Macchiato</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$125</span>
+                            </div>
+                            <p class="menu-item-desc">Doble espresso con espuma de leche.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Cortado</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$150</span>
+                            </div>
+                            <p class="menu-item-desc">Doble espresso con partes iguales de leche.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Babyccino</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$145</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada, M&amp;M’s, crema batida y caramelo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Moccacino</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$125</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada, cacao molido y chocolate.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">White Moccacino <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$125</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso con leche vaporizada, espuma de leche y chocolate blanco.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Chocolate caliente</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$130</span>
+                            </div>
+                            <p class="menu-item-desc">Chocolate, cacao molido y leche vaporizada.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Matcha Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$154</span>
+                            </div>
+                            <p class="menu-item-desc">Leche vaporizada con matcha.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Chai Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$154</span>
+                            </div>
+                            <p class="menu-item-desc">Té de canela con especias y leche vaporizada.</p>
                         </li>
                     </ul>
+                    <p class="menu-notes" data-reveal><span class="menu-pill">Extra de leche vegetal C$30</span><span class="menu-pill">Extra de shot de espresso C$45</span></p>
                 </div>
 
-                <div class="menu-panel" id="panel-frios" role="tabpanel" aria-labelledby="tab-frios" hidden>
+                <div class="menu-panel" id="panel-helado" role="tabpanel" aria-labelledby="tab-helado" hidden>
                     <ul class="menu-list">
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Iced latte</h3>
-                            <p class="menu-item-desc">Espresso, leche y hielo. Todo lo que necesitas para continuar.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$125</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso y leche de tu elección, sobre cubos de hielo.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Americano frío</h3>
-                            <p class="menu-item-desc">Refrescante y directo.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Caramel Latte <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$145</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección y caramelo, sobre cubos de hielo.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Iced mocha</h3>
-                            <p class="menu-item-desc">Espresso, chocolate, leche y hielo.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Moka Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$145</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección y chocolate, sobre cubos de hielo.</p>
                         </li>
                         <li class="menu-item">
-                            <h3 class="menu-item-name">Frappé</h3>
-                            <p class="menu-item-desc">Café batido con hielo, cremoso y bien frío.</p>
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced White Moka Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$160</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección y chocolate blanco, sobre cubos de hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Pink Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$140</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección y fresa, sobre cubos de hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Chai Latte</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$160</span>
+                            </div>
+                            <p class="menu-item-desc">Té de canela con especias y leche de tu elección, sobre cubos de hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Americano</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$105</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso y agua sobre cubos de hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Affogato</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$160</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, helado de vainilla y leche de tu elección.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Frappé Momoto</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$130</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección y sirope.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Frappé Oreo</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$150</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección, Oreo, chocolate y sirope simple.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Frappé Chocolate</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$150</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección, cacao, chocolate y sirope simple.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Frappé Caramelo</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$150</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, leche de tu elección, caramelo y sirope simple.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Frappé Chai <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$175</span>
+                            </div>
+                            <p class="menu-item-desc">Té de canela con especias, espresso y leche de tu elección.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Shakerato Blanco</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$160</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso, chocolate blanco y leche, agitados con hielo para una textura suave y espumosa.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Iced Honey Cold Foam <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$170</span>
+                            </div>
+                            <p class="menu-item-desc">Doble shot de espresso, miel, sal marina y cold foam.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Mont Blanc</h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$205</span>
+                            </div>
+                            <p class="menu-item-desc">Naranja navel, cold brew, cold foam de vainilla y ralladura de naranja.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head">
+                                <h3 class="menu-item-name">Creme Mokacino <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                                <span class="menu-item-dots" aria-hidden="true"></span>
+                                <span class="menu-item-price">C$185</span>
+                            </div>
+                            <p class="menu-item-desc">Espresso y leche de tu elección con cold foam de chocolate y cacao molido, sobre cubos de hielo.</p>
                         </li>
                     </ul>
+                    <p class="menu-notes" data-reveal><span class="menu-pill">Extra de leche vegetal C$30</span></p>
                 </div>
             </div>
         </section>
 
-        <!-- DE LA CASA -->
-        <section class="menu-section" id="casa" data-menu-section="casa">
+        <!-- MATCHA -->
+        <section class="menu-section" id="matcha" data-menu-section="matcha">
             <header class="menu-section-header">
-                <span class="menu-section-kicker" data-reveal>Firma</span>
-                <h2 class="menu-section-title" data-split-chars>De la casa</h2>
+                <h2 class="menu-section-title" data-split-chars>Matcha</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Latte, frutas y cítricos</p>
             </header>
 
-            <article class="menu-feature" data-reveal>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Blueberry Matcha Latte</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$185</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha y leche de tu elección con arándanos, sobre cubos de hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Mango Matcha Latte <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$170</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha y leche de tu elección con mango, sobre cubos de hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Banana Matcha Latte</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$180</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha y leche de tu elección licuada con banano, sobre cubos de hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Fresa Matcha Latte</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$170</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha y leche de tu elección con fresa, sobre cubos de hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Citrus Matcha <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$185</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha agitado con hielo, limón, miel y sal.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Iced Matcha Latte</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$161</span>
+                    </div>
+                    <p class="menu-item-desc">Matcha, leche de tu elección y sirope, sobre cubos de hielo.</p>
+                </li>
+            </ul>
+            <p class="menu-notes" data-reveal><span class="menu-pill">Extra de leche vegetal C$30</span></p>
+        </section>
+
+        <!-- SMOOTHIES -->
+        <section class="menu-section" id="smoothies" data-menu-section="smoothies">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Smoothies</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Fruta y licuados</p>
+            </header>
+
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Verano en Hawái</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$173</span>
+                    </div>
+                    <p class="menu-item-desc">Mango y kiwi.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Frutos Salvajes</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$161</span>
+                    </div>
+                    <p class="menu-item-desc">Fresa y arándano.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Morado Silvestre</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$161</span>
+                    </div>
+                    <p class="menu-item-desc">Arándano, fresa y moras.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Rosa Tropical</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$173</span>
+                    </div>
+                    <p class="menu-item-desc">Kiwi y fresa.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Chunky Monkey <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$185</span>
+                    </div>
+                    <p class="menu-item-desc">Mantequilla de maní, chocolate, cacao, banano y leche.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Frebano</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$161</span>
+                    </div>
+                    <p class="menu-item-desc">Fresa, banano, leche condensada y leche de tu elección.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Nutrihabana</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$185</span>
+                    </div>
+                    <p class="menu-item-desc">Mantequilla de maní, avena, banano y leche de tu elección.</p>
+                </li>
+            </ul>
+            <p class="menu-notes" data-reveal><span class="menu-pill">Extra de leche vegetal C$30</span></p>
+        </section>
+
+        <!-- MOCKTAILS -->
+        <section class="menu-section" id="mocktails" data-menu-section="mocktails">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Mocktails</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Frescos y sin alcohol</p>
+            </header>
+
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Berry Fresh</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$125</span>
+                    </div>
+                    <p class="menu-item-desc">Arándanos macerados, jugo de limón, sal y agua gasificada sobre hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Kiwi Fresh</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$125</span>
+                    </div>
+                    <p class="menu-item-desc">Kiwi macerado, jugo de limón, sal y agua gasificada sobre hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Fresa Fresh</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$125</span>
+                    </div>
+                    <p class="menu-item-desc">Fresa macerada, jugo de limón, sal y agua gasificada sobre hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Cherry Fresh</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$125</span>
+                    </div>
+                    <p class="menu-item-desc">Cereza macerada, jugo de limón, sal y agua gasificada sobre hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Funky Mango</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$145</span>
+                    </div>
+                    <p class="menu-item-desc">Mango, maracuyá, jugo de limón, sal y agua gasificada sobre hielo.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Citrus Cold Brew <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$185</span>
+                    </div>
+                    <p class="menu-item-desc">Cold brew agitado con hielo, limón, miel y sal.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- CÓCTELES -->
+        <section class="menu-section" id="cocteles" data-menu-section="cocteles">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Cócteles</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Signature cocktails</p>
+            </header>
+
+            <article class="menu-feature menu-feature--spritz" data-reveal>
                 <div class="menu-feature-media">
                     <img src="assets/img/galeria-5.jpg" alt="Coffee Spritz con naranja servido en copa" loading="lazy" decoding="async" width="900" height="1125">
                 </div>
                 <div class="menu-feature-body">
-                    <span class="menu-feature-tag">Firma de la casa</span>
+                    <span class="menu-feature-tag">Signature cocktail <span aria-hidden="true">★</span></span>
                     <h3 class="menu-feature-name">Coffee Spritz</h3>
-                    <p class="menu-feature-desc">Café, naranja y hielo, servido en copa. Refrescante, ligero y distinto: ideal para la tarde.</p>
+                    <p class="menu-feature-desc">Espresso, naranja navel, Kahlúa, agua tónica y romero.</p>
+                    <p class="menu-feature-price">C$250</p>
                 </div>
             </article>
-        </section>
 
-        <!-- SIN CAFÉ -->
-        <section class="menu-section" id="sin-cafe" data-menu-section="sin-cafe">
-            <header class="menu-section-header">
-                <span class="menu-section-kicker" data-reveal>También</span>
-                <h2 class="menu-section-title" data-split-chars>Sin café</h2>
-            </header>
             <ul class="menu-list">
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Chocolate</h3>
-                    <p class="menu-item-desc">Caliente o frío, espeso y reconfortante.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Carajillo</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$250</span>
+                    </div>
+                    <p class="menu-item-desc">Espresso y Licor 43, agitados con hielo.</p>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Chai latte</h3>
-                    <p class="menu-item-desc">Té especiado con leche vaporizada.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Espresso Martini</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$235</span>
+                    </div>
+                    <p class="menu-item-desc">Espresso, vodka y Kahlúa, agitados con hielo para una textura espumosa.</p>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Té e infusiones</h3>
-                    <p class="menu-item-desc">Pregunta por las opciones del día.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Sangría Tinta</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$200</span>
+                    </div>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Limonada</h3>
-                    <p class="menu-item-desc">Natural, con hierbabuena y hielo.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Sangría Rosa</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$200</span>
+                    </div>
                 </li>
             </ul>
         </section>
 
-        <!-- PARA ACOMPAÑAR -->
-        <section class="menu-section" id="acompanar" data-menu-section="acompanar">
+        <!-- DESAYUNOS -->
+        <section class="menu-section" id="desayunos" data-menu-section="desayunos">
             <header class="menu-section-header">
-                <span class="menu-section-kicker" data-reveal>Algo</span>
-                <h2 class="menu-section-title" data-split-chars>Para acompañar</h2>
+                <h2 class="menu-section-title" data-split-chars>Desayunos</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Desayunos y brunch</p>
             </header>
+
             <ul class="menu-list">
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Croissant</h3>
-                    <p class="menu-item-desc">Hojaldrado, solo o relleno.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Desayuno Típico</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$225</span>
+                    </div>
+                    <p class="menu-item-desc">Gallo pinto, huevos revueltos, queso frito, pan y crema dulce.</p>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Pastel del día</h3>
-                    <p class="menu-item-desc">Pregunta por la opción de hoy.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Gallo Pinto Bowl <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$247</span>
+                    </div>
+                    <p class="menu-item-desc">Gallo pinto, huevos revueltos, tocino y hashbrown.</p>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Galletas</h3>
-                    <p class="menu-item-desc">Ideales para acompañar el café.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Wrap Desayuno</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$273</span>
+                    </div>
+                    <p class="menu-item-desc">Gallo pinto, jamón de pavo ahumado, queso mozzarella y huevos revueltos, acompañado de hashbrown.</p>
                 </li>
-                <li class="menu-item" data-reveal>
-                    <h3 class="menu-item-name">Sándwich</h3>
-                    <p class="menu-item-desc">En pan artesanal, con ingredientes frescos.</p>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Tostadas</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$215</span>
+                    </div>
+                    <p class="menu-item-desc">Pan tostado, aguacate, huevos revueltos y queso Philadelphia®.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Bagel Desayuno</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$232</span>
+                    </div>
+                    <p class="menu-item-desc">Huevos revueltos, tocino y queso Philadelphia®.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Bagel Royale</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$225</span>
+                    </div>
+                    <p class="menu-item-desc">Jamón y queso Philadelphia®.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Bagel Italiano</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$245</span>
+                    </div>
+                    <p class="menu-item-desc">Jamón, tomates cherry, queso Philadelphia® y salsa pesto.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Cinnamon Bagel</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$235</span>
+                    </div>
+                    <p class="menu-item-desc">Banano, miel, canela y queso Philadelphia®.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Bagel Nutella®</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$225</span>
+                    </div>
+                    <p class="menu-item-desc">Banano y Nutella®.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Greek Bowl</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$235</span>
+                    </div>
+                    <p class="menu-item-desc">Yogurt griego, granola de la casa, fresa, chía, arándanos, kiwi y banano.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Waffle Nutella®</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$375</span>
+                    </div>
+                    <p class="menu-item-desc">Dos waffles con arándanos, Nutella® y crema batida.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Pancakes</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$345</span>
+                    </div>
+                    <p class="menu-item-desc">Dos pancakes con banano, crema batida y salsa de caramelo.</p>
                 </li>
             </ul>
 
-            <p class="menu-note" data-reveal>Consulta precios y disponibilidad en barra o <a href="https://wa.me/50586568304" target="_blank" rel="noopener">escríbenos por WhatsApp</a>.</p>
+            <h3 class="menu-subhead" data-reveal>Omelettes</h3>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Omelette Clásico</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$305</span>
+                    </div>
+                    <p class="menu-item-desc">Jamón de pavo, queso mozzarella y pan.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Omelette Montecarlo</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$353</span>
+                    </div>
+                    <p class="menu-item-desc">Jamón de pavo, queso suizo, tomates cherry, salsa marinara y pan.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Omelette Portobello</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$345</span>
+                    </div>
+                    <p class="menu-item-desc">Champiñones, tocino, queso cheddar, chiltoma y pan.</p>
+                </li>
+            </ul>
         </section>
+
+        <!-- PANINIS -->
+        <section class="menu-section" id="paninis" data-menu-section="paninis">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Paninis</h2>
+            </header>
+
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Momoto Club <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$271</span>
+                    </div>
+                    <p class="menu-item-desc">Jamón de pavo, tocino, aguacate, pesto, queso mozzarella y tomate.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">A.M. Club</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$258</span>
+                    </div>
+                    <p class="menu-item-desc">Huevo revuelto, tocino, queso cheddar, rúgula, sal y pimienta.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Spicy Chicken <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$292</span>
+                    </div>
+                    <p class="menu-item-desc">Pollo, lechuga, aguacate, tomate y salsa chipotle.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Tunacado</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$345</span>
+                    </div>
+                    <p class="menu-item-desc">Atún, tomate, lechuga, queso mozzarella y aguacate.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Chicken Caesar</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$283</span>
+                    </div>
+                    <p class="menu-item-desc">Lechuga, pollo, queso mozzarella, tomate, cebolla morada y aderezo caesar.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Vegetariano <span class="menu-mark menu-mark--veg" title="Vegetariano"><svg class="menu-mark-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></svg><span class="sr-only">(vegetariano)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$263</span>
+                    </div>
+                    <p class="menu-item-desc">Rúgula, pesto, aguacate, queso mozzarella y tomate.</p>
+                </li>
+            </ul>
+            <p class="menu-notes" data-reveal><span class="menu-pill">Agrega papas a tu orden por C$45</span></p>
+        </section>
+
+        <!-- HAMBURGUESAS -->
+        <section class="menu-section" id="hamburguesas" data-menu-section="hamburguesas">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Hamburguesas</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">1/4 de libra de carne de res</p>
+            </header>
+
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Momoto Bacon</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$345</span>
+                    </div>
+                    <p class="menu-item-desc">1/4 de libra de carne de res, bacon, queso cheddar, lechuga, tomate, cebolla morada y salsa de la casa.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Momoto Pepperoni</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$373</span>
+                    </div>
+                    <p class="menu-item-desc">1/4 de libra de carne de res, pepperoni, queso suizo, lechuga, tomate, cebolla morada y salsa de la casa.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Flat Burger <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$412</span>
+                    </div>
+                    <p class="menu-item-desc">1/4 de libra de carne de res, hongos salteados y tocino sobre queso cheddar, con salsa chipotle.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Mini hamburguesas (4 unidades)</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$743</span>
+                    </div>
+                    <p class="menu-item-desc">Queso cheddar sobre carne de res y lechuga.</p>
+                </li>
+            </ul>
+            <p class="menu-notes" data-reveal><span class="menu-pill">Papas incluidas</span></p>
+        </section>
+
+        <!-- ENSALADAS Y WRAPS -->
+        <section class="menu-section" id="ensaladas" data-menu-section="ensaladas">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Ensaladas y wraps</h2>
+            </header>
+
+            <h3 class="menu-subhead" data-reveal>Ensaladas</h3>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Caesar</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$355</span>
+                    </div>
+                    <p class="menu-item-desc">Pollo, jamón de pavo, lechuga, crutones, queso mozzarella, manzana verde y aderezo caesar.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Waldorf</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$413</span>
+                    </div>
+                    <p class="menu-item-desc">Manzana verde, lechuga, queso suizo, jamón de pavo, nueces, pasas y aderezo alioli.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Oceánica</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$375</span>
+                    </div>
+                    <p class="menu-item-desc">Atún, lechuga, tomate, cebolla morada, pepino, aceite de oliva, limón, sal y pimienta.</p>
+                </li>
+            </ul>
+
+            <h3 class="menu-subhead" data-reveal>Wraps</h3>
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Chicken Caesar</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$345</span>
+                    </div>
+                    <p class="menu-item-desc">Pollo, jamón de pavo, tocino, queso mozzarella, lechuga, tomate, cebolla morada y aderezo caesar.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Del Rancho</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$358</span>
+                    </div>
+                    <p class="menu-item-desc">Res, queso cheddar, lechuga, tomate, cebolla morada y aderezo ranch.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Vegetariano <span class="menu-mark menu-mark--veg" title="Vegetariano"><svg class="menu-mark-icon" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14"/><path d="M5 19c3-4 6-7 10-9"/></svg><span class="sr-only">(vegetariano)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$307</span>
+                    </div>
+                    <p class="menu-item-desc">Nueces, aguacate, queso suizo, lechuga, tomate y cebolla morada.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SNACKS -->
+        <section class="menu-section" id="snacks" data-menu-section="snacks">
+            <header class="menu-section-header">
+                <h2 class="menu-section-title" data-split-chars>Snacks</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Para compartir</p>
+            </header>
+
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Deditos de mozzarella</h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$262</span>
+                    </div>
+                    <p class="menu-item-desc">Seis deditos de queso mozzarella con salsa marinara y perejil picado.</p>
+                </li>
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Papas Encachimbadas <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$302</span>
+                    </div>
+                    <p class="menu-item-desc">Papas wedge sobre bacon y queso cheddar.</p>
+                </li>
+            </ul>
+
+            <div class="menu-dessert" data-reveal>
+                <span class="script">Postres</span>
+                <p>Pregunta por nuestros postres del día.</p>
+            </div>
+        </section>
+
+        <p class="menu-note" data-reveal>¿Dudas sobre un producto o tu sucursal? <a href="https://wa.me/50586568304" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>.</p>
 
     </div>
 </div>
@@ -307,14 +1046,22 @@
     <div class="footer-inner">
         <div class="footer-columns">
             <div class="footer-col">
-                <p class="footer-col-title">Visítanos</p>
-                <div class="footer-address">
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=12.136662%2C-86.305481" target="_blank" rel="noopener">Batahola Sur, de Miscelánea La Colmena<br>3 c. al sur, 1 c. al este<br>Managua, Nicaragua</a>
+                <p class="footer-col-title">Sucursales</p>
+                <div class="footer-branch">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=MOMOTO%20CAF%C3%89%20Batahola&amp;query_place_id=ChIJ__ziC59VcY8Ruhu6Uc4Z784" target="_blank" rel="noopener">Batahola Sur</a>
+                    <span>Lunes a domingo · 8 AM – 8 PM</span>
+                </div>
+                <div class="footer-branch">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Momoto%20Caf%C3%A9%20Plaza%20Natura&amp;query_place_id=ChIJy_lLUQBVcY8RzkOb0MafDWc" target="_blank" rel="noopener">Plaza Natura</a>
+                    <span>Lunes a sábado · 8 AM – 6 PM</span>
+                </div>
+                <div class="footer-branch">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Distrito%20Caf%C3%A9%20by%20Momoto" target="_blank" rel="noopener">Distrito Diseño</a>
+                    <span>Lunes a sábado · 9 AM – 6 PM</span>
                 </div>
                 <div class="footer-phone">
-                    <a href="https://wa.me/50586568304" target="_blank" rel="noopener">+505 8656 8304</a>
+                    <a href="https://wa.me/50586568304" target="_blank" rel="noopener">WhatsApp +505 8656 8304</a>
                 </div>
-                <p class="footer-hours">Lunes a domingo<br>8:00 AM – 8:00 PM</p>
             </div>
 
             <div class="footer-col">
@@ -323,7 +1070,7 @@
                     <li><a href="menu.html">Menú</a></li>
                     <li><a href="index.html#nosotros">Nosotros</a></li>
                     <li><a href="index.html#momentos">Momentos</a></li>
-                    <li><a href="index.html#visitanos">Cómo llegar</a></li>
+                    <li><a href="index.html#visitanos">Sucursales</a></li>
                 </ul>
             </div>
 

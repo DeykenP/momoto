@@ -5,12 +5,14 @@
     // Configuración del negocio (editar aquí)
     // -----------------------------------------------
 
-    var BUSINESS = {
-        timeZone: 'America/Managua',
-        // Lunes a domingo, 8:00 a 20:00 (rótulo de la puerta)
-        openHour: 8,
-        closeHour: 20
-    };
+    var TIME_ZONE = 'America/Managua';
+
+    // Horarios por sucursal. days: 0 = domingo … 6 = sábado. Horas en formato 24 h.
+    var BRANCHES = [
+        { id: 'batahola', name: 'Batahola', days: [0, 1, 2, 3, 4, 5, 6], open: 8, close: 20 },
+        { id: 'natura', name: 'Plaza Natura', days: [1, 2, 3, 4, 5, 6], open: 8, close: 18 },
+        { id: 'distrito', name: 'Distrito Diseño', days: [1, 2, 3, 4, 5, 6], open: 9, close: 18 }
+    ];
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -167,8 +169,10 @@
     }
 
     if (sections.length && layers.length) {
-        // El primer video arranca de inmediato.
-        activateLayer(sections[0].getAttribute('data-section'));
+        // Sin IntersectionObserver, arranca el primero. Con él, el primer aviso
+        // (inmediato) activa la sección visible: si se entra con un ancla, no se
+        // descarga de más el video de la portada.
+        if (!hasIO) activateLayer(sections[0].getAttribute('data-section'));
 
         if (hasIO) {
             var ratios = {};
@@ -298,26 +302,52 @@
         menuNav.scrollTo({ left: target, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
 
-    if (menuSections.length && hasIO) {
-        var menuObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (!entry.isIntersecting) return;
-                var id = entry.target.getAttribute('data-menu-section');
+    // Scroll-spy: la sección activa es la última cuyo inicio ya pasó bajo la barra.
+    if (menuSections.length) {
+        var currentMenu = null;
+        var spyQueued = false;
+        var centerTimer = null;
 
-                menuNavLinks.forEach(function (link) {
-                    var isActive = link.getAttribute('data-menu-nav') === id;
-                    link.classList.toggle('is-active', isActive);
-                    if (isActive) {
-                        link.setAttribute('aria-current', 'true');
-                        centerNavLink(link);
-                    } else {
-                        link.removeAttribute('aria-current');
-                    }
-                });
+        var spy = function () {
+            spyQueued = false;
+            var line = stickyOffset() + 48;
+            var current = null;
+            menuSections.forEach(function (section) {
+                if (section.getBoundingClientRect().top <= line) current = section;
             });
-        }, { threshold: 0.1, rootMargin: '-20% 0px -60% 0px' });
+            var id = current ? current.getAttribute('data-menu-section') : null;
+            if (id === currentMenu) return;
+            currentMenu = id;
 
-        menuSections.forEach(function (section) { menuObserver.observe(section); });
+            menuNavLinks.forEach(function (link) {
+                var isActive = link.getAttribute('data-menu-nav') === id;
+                link.classList.toggle('is-active', isActive);
+                if (isActive) {
+                    link.setAttribute('aria-current', 'true');
+                    // Se centra cuando el scroll de la página termina, para no
+                    // interrumpir el desplazamiento suave hacia la sección.
+                    clearTimeout(centerTimer);
+                    centerTimer = setTimeout(function () { centerNavLink(link); }, 220);
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', function () {
+            if (!spyQueued) {
+                spyQueued = true;
+                requestAnimationFrame(spy);
+            }
+            // Mientras la página se mueve, se pospone el centrado de la barra.
+            if (centerTimer) {
+                clearTimeout(centerTimer);
+                var active = menuNav && menuNav.querySelector('.menu-nav-link.is-active');
+                if (active) centerTimer = setTimeout(function () { centerNavLink(active); }, 220);
+            }
+        }, { passive: true });
+        window.addEventListener('load', spy);
+        spy();
     }
 
 
@@ -331,11 +361,52 @@
         return headerHeight + (menuNav ? menuNav.offsetHeight : 0);
     }
 
+    // Posición en el documento sin contar transformaciones: las animaciones de
+    // entrada desplazan los elementos unos px mientras se revelan.
+    function absTop(el) {
+        var y = 0;
+        while (el) {
+            y += el.offsetTop;
+            el = el.offsetParent;
+        }
+        return y;
+    }
+
     function scrollToEl(target, smooth) {
-        var top = target.getBoundingClientRect().top + window.scrollY;
+        var top = absTop(target);
         // Los paneles de pantalla completa se alinean al borde superior.
         var y = target.hasAttribute('data-section') ? top : top - stickyOffset();
         window.scrollTo({ top: y, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+    }
+
+
+    // Al entrar con un ancla (index.html#plaza-natura, menu.html#cocteles,
+    // menu.html#helado…) se reajusta cuando cargan la página y las fuentes,
+    // que pueden mover el contenido. Si la persona ya empezó a moverse, no se toca.
+    var userMoved = false;
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (type) {
+        window.addEventListener(type, function () { userMoved = true; }, { passive: true, once: true });
+    });
+
+    function settleHash() {
+        if (userMoved) return;
+        var hash = window.location.hash.slice(1);
+        if (!hash || !/^[\w-]+$/.test(hash)) return;
+        var target = document.getElementById(hash);
+        if (target) {
+            scrollToEl(target, false);
+            return;
+        }
+        var tab = document.querySelector('[data-tab-hash~="' + hash + '"]');
+        var group = tab && tab.closest('[data-tabs]');
+        if (group) {
+            window.scrollTo({ top: absTop(group) - stickyOffset() - 24, behavior: 'auto' });
+        }
+    }
+
+    window.addEventListener('load', settleHash);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { setTimeout(settleHash, 60); });
     }
 
 
@@ -376,14 +447,8 @@
 
         // menu.html#frios o #calientes: abre la pestaña y baja directo a ella.
         var hash = window.location.hash.replace('#', '');
-        var fromHash = hash && group.querySelector('[data-tab-hash="' + hash + '"]');
-        if (fromHash) {
-            activateTab(group, fromHash, false);
-            window.addEventListener('load', function () {
-                var top = group.getBoundingClientRect().top + window.scrollY - stickyOffset() - 24;
-                window.scrollTo({ top: top, behavior: 'auto' });
-            });
-        }
+        var fromHash = hash && /^[\w-]+$/.test(hash) && group.querySelector('[data-tab-hash~="' + hash + '"]');
+        if (fromHash) activateTab(group, fromHash, false);
     });
 
 
@@ -452,20 +517,30 @@
     // Abierto / cerrado según la hora de Managua
     // -----------------------------------------------
 
-    function managuaHour() {
+    var WEEKDAYS = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    var DAY_NAMES = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+    // Día de la semana y hora decimal en Managua (o en ?hora=AAAA-MM-DDTHH:MM para pruebas).
+    function managuaNow() {
         try {
+            var test = /[?&]hora=([\d\-T:]+)/.exec(window.location.search);
+            var date = test ? new Date(test[1] + ':00-06:00') : new Date();
             var parts = new Intl.DateTimeFormat('en-US', {
-                timeZone: BUSINESS.timeZone,
+                timeZone: TIME_ZONE,
+                weekday: 'short',
                 hour: 'numeric',
                 minute: 'numeric',
                 hourCycle: 'h23'
-            }).formatToParts(new Date());
-            var h = 0, m = 0;
+            }).formatToParts(date);
+            var now = { day: 0, hour: 0 };
+            var minutes = 0;
             parts.forEach(function (p) {
-                if (p.type === 'hour') h = parseInt(p.value, 10) % 24;
-                if (p.type === 'minute') m = parseInt(p.value, 10);
+                if (p.type === 'weekday') now.day = WEEKDAYS[p.value];
+                if (p.type === 'hour') now.hour = parseInt(p.value, 10) % 24;
+                if (p.type === 'minute') minutes = parseInt(p.value, 10);
             });
-            return h + m / 60;
+            now.hour += minutes / 60;
+            return now;
         } catch (err) {
             return null;
         }
@@ -477,25 +552,70 @@
         return hh + ' ' + suffix;
     }
 
+    function isOpen(branch, now) {
+        return branch.days.indexOf(now.day) !== -1 && now.hour >= branch.open && now.hour < branch.close;
+    }
+
+    // Próxima apertura: { inDays: 0 (hoy), 1 (mañana)…, day, hour }.
+    function nextOpening(branch, now) {
+        if (branch.days.indexOf(now.day) !== -1 && now.hour < branch.open) {
+            return { inDays: 0, day: now.day, hour: branch.open };
+        }
+        for (var k = 1; k <= 7; k++) {
+            var d = (now.day + k) % 7;
+            if (branch.days.indexOf(d) !== -1) return { inDays: k, day: d, hour: branch.open };
+        }
+        return null;
+    }
+
+    function whenLabel(next) {
+        var when = next.inDays === 0 ? 'hoy' : next.inDays === 1 ? 'mañana' : 'el ' + DAY_NAMES[next.day];
+        return when + ' a las ' + formatHour(next.hour);
+    }
+
+    function joinNames(names) {
+        if (names.length <= 1) return names.join('');
+        return names.slice(0, -1).join(', ') + ' y ' + names[names.length - 1];
+    }
+
+    function setStatus(el, open, text) {
+        el.classList.toggle('is-open', open);
+        el.classList.toggle('is-closed', !open);
+        var target = el.querySelector('[data-open-text]');
+        if (target) target.textContent = text;
+        el.hidden = false;
+    }
+
     function updateOpenStatus() {
-        var els = document.querySelectorAll('[data-open-status]');
-        if (!els.length) return;
-        var now = managuaHour();
-        if (now === null) return;
+        var now = managuaNow();
+        if (!now) return;
 
-        var isOpen = now >= BUSINESS.openHour && now < BUSINESS.closeHour;
-        var label = isOpen
-            ? 'Abierto ahora · hasta las ' + formatHour(BUSINESS.closeHour)
-            : 'Cerrado · abrimos a las ' + formatHour(BUSINESS.openHour);
-        // Versión corta donde el horario ya está escrito al lado.
-        var shortLabel = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
+        // Estado por sucursal (panel Visítanos).
+        BRANCHES.forEach(function (branch) {
+            document.querySelectorAll('[data-branch-status="' + branch.id + '"]').forEach(function (el) {
+                var open = isOpen(branch, now);
+                var text = open
+                    ? 'Abierto ahora · cierra a las ' + formatHour(branch.close)
+                    : 'Cerrado · abre ' + whenLabel(nextOpening(branch, now));
+                setStatus(el, open, text);
+            });
+        });
 
-        els.forEach(function (el) {
-            el.classList.toggle('is-open', isOpen);
-            el.classList.toggle('is-closed', !isOpen);
-            var text = el.querySelector('[data-open-text]');
-            if (text) text.textContent = el.getAttribute('data-open-status') === 'short' ? shortLabel : label;
-            el.hidden = false;
+        // Resumen de las tres sucursales (franja superior).
+        var openNow = BRANCHES.filter(function (b) { return isOpen(b, now); });
+        var summary;
+        if (openNow.length === BRANCHES.length) {
+            summary = 'Abierto ahora en nuestras ' + BRANCHES.length + ' sucursales';
+        } else if (openNow.length) {
+            summary = 'Abierto ahora en ' + joinNames(openNow.map(function (b) { return b.name; }));
+        } else {
+            var soonest = BRANCHES.map(function (b) { return nextOpening(b, now); })
+                .filter(Boolean)
+                .sort(function (a, b) { return (a.inDays * 24 + a.hour) - (b.inDays * 24 + b.hour); })[0];
+            summary = soonest ? 'Cerrado · abrimos ' + whenLabel(soonest) : 'Cerrado';
+        }
+        document.querySelectorAll('[data-open-status]').forEach(function (el) {
+            setStatus(el, openNow.length > 0, summary);
         });
     }
 
