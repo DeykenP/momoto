@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú · Momoto Café</title>
+    <meta name="description" content="El menú de Momoto Café en Batahola Sur, Managua: café caliente y frío, bebidas sin café, dulces y salados.">
+    <meta name="theme-color" content="#121110">
+
+    <meta property="og:title" content="Menú · Momoto Café">
+    <meta property="og:description" content="Café caliente y frío, bebidas sin café, dulces y salados. Lunes a domingo, de 8 AM a 8 PM.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_NI">
+    <!-- Al publicar, cambiar por la URL absoluta: https://TU-DOMINIO/assets/img/og.jpg -->
+    <meta property="og:image" content="assets/img/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Ms+Madi&display=swap">
+
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="menu-page">
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<div class="ticker" role="region" aria-label="Información rápida">
+    <div class="ticker-track">
+        <div class="ticker-group">
+            <span class="ticker-item" data-open-status hidden><span class="open-dot"></span><span data-open-text></span></span>
+            <span class="ticker-item">Lunes a domingo · 8 AM – 8 PM</span>
+            <span class="ticker-item">Batahola Sur · Managua, Nicaragua</span>
+            <span class="ticker-item">Café y buenas historias</span>
+            <span class="ticker-item"><a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener">@momotocafenic</a></span>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+            <span class="ticker-item" data-open-status hidden><span class="open-dot"></span><span data-open-text></span></span>
+            <span class="ticker-item">Lunes a domingo · 8 AM – 8 PM</span>
+            <span class="ticker-item">Batahola Sur · Managua, Nicaragua</span>
+            <span class="ticker-item">Café y buenas historias</span>
+            <span class="ticker-item"><a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" tabindex="-1">@momotocafenic</a></span>
+        </div>
+    </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-inner">
+        <a href="index.html" class="logo header-logo" aria-label="Momoto Café, inicio">
+            <span class="logo-word" aria-hidden="true">Momoto</span>
+            <span class="logo-rule" aria-hidden="true"></span>
+            <span class="logo-script" aria-hidden="true">Café</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Navegación principal">
+            <a href="index.html#nosotros" class="nav-link">Nosotros</a>
+            <a href="menu.html" class="nav-link is-active" aria-current="page">Menú</a>
+            <a href="index.html#momentos" class="nav-link">Momentos</a>
+            <a href="index.html#visitanos" class="nav-link">Visitanos</a>
+            <a href="https://wa.me/50586568304" class="nav-cta" target="_blank" rel="noopener">Escribinos</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-menu-nav" aria-label="Navegación móvil">
+            <a href="index.html#nosotros" class="mobile-link">Nosotros</a>
+            <a href="menu.html" class="mobile-link">Menú</a>
+            <a href="index.html#momentos" class="mobile-link">Momentos</a>
+            <a href="index.html#visitanos" class="mobile-link">Visitanos</a>
+            <a href="https://wa.me/50586568304" class="mobile-link" target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+        <p class="mobile-menu-script" aria-hidden="true">Historias con café</p>
+        <div class="mobile-menu-footer">
+            <a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://wa.me/50586568304" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+<section class="page-hero">
+    <div class="page-hero-media">
+        <img src="assets/img/menu-hero.jpg" alt="" fetchpriority="high" decoding="async">
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <h1 class="page-hero-title" data-split-chars data-char-delay="90" data-char-start="100">Menú</h1>
+        <span class="page-hero-script" data-write style="transition-delay: 0.6s" aria-hidden="true">hecho con calma</span>
+        <p class="page-hero-subtitle" data-reveal data-delay="3">Lunes a domingo · 8 AM – 8 PM</p>
+    </div>
+</section>
+
+<nav class="menu-nav" id="menuNav" aria-label="Secciones del menú">
+    <a href="#cafe" class="menu-nav-link" data-menu-nav="cafe">Café</a>
+    <a href="#sin-cafe" class="menu-nav-link" data-menu-nav="sin-cafe">Sin café</a>
+    <a href="#dulces" class="menu-nav-link" data-menu-nav="dulces">Dulces</a>
+    <a href="#salados" class="menu-nav-link" data-menu-nav="salados">Salados</a>
+</nav>
+
+<!-- ===========================================
+     MENÚ DE EJEMPLO
+     Reemplazar nombres, descripciones y agregar precios con el menú real.
+     Para mostrar un precio, agregá dentro de .menu-item-head:
+       <span class="menu-item-dots"></span><span class="menu-item-price">C$ 90</span>
+     =========================================== -->
+<div class="menu-paper">
+    <div class="menu-body">
+
+        <p class="menu-intro" data-reveal>
+            <span class="script">Bienvenidos</span>
+            Esto es lo que preparamos todos los días en Momoto. Preguntá en barra por las recomendaciones del día.
+        </p>
+
+        <!-- CAFÉ -->
+        <section class="menu-section" id="cafe" data-menu-section="cafe">
+            <header class="menu-section-header">
+                <span class="menu-section-kicker" data-reveal>Nuestro</span>
+                <h2 class="menu-section-title" data-split-chars>Café</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Espresso y barra</p>
+            </header>
+
+            <div data-tabs>
+                <div class="menu-tabs" role="tablist" aria-label="Tipo de café">
+                    <button class="menu-tab is-active" role="tab" id="tab-calientes" aria-selected="true" aria-controls="panel-calientes" data-tab-hash="calientes">Calientes</button>
+                    <button class="menu-tab" role="tab" id="tab-frios" aria-selected="false" aria-controls="panel-frios" data-tab-hash="frios" tabindex="-1">Fríos</button>
+                </div>
+
+                <div class="menu-panel is-active" id="panel-calientes" role="tabpanel" aria-labelledby="tab-calientes">
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Espresso</h3></div>
+                            <p class="menu-item-desc">Corto, intenso y aromático.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Americano</h3></div>
+                            <p class="menu-item-desc">Espresso alargado con agua caliente.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Macchiato</h3></div>
+                            <p class="menu-item-desc">Espresso manchado con un toque de espuma de leche.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Capuchino</h3></div>
+                            <p class="menu-item-desc">Espresso, leche vaporizada y espuma sedosa.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Latte</h3></div>
+                            <p class="menu-item-desc">Suave y cremoso, con más leche.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Mocaccino</h3></div>
+                            <p class="menu-item-desc">Espresso, chocolate y leche vaporizada.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-panel" id="panel-frios" role="tabpanel" aria-labelledby="tab-frios" hidden>
+                    <ul class="menu-list">
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Latte frío</h3></div>
+                            <p class="menu-item-desc">Espresso y leche fría sobre hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Americano frío</h3></div>
+                            <p class="menu-item-desc">Refrescante y directo, para el calor de la tarde.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Frappé de café</h3></div>
+                            <p class="menu-item-desc">Café batido con hielo, cremoso y bien frío.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Frappé moka</h3></div>
+                            <p class="menu-item-desc">Café, chocolate y hielo.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Cold brew</h3></div>
+                            <p class="menu-item-desc">Café infusionado en frío durante horas, suave y dulce.</p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="menu-item-head"><h3 class="menu-item-name">Affogato</h3></div>
+                            <p class="menu-item-desc">Helado de vainilla bañado con un espresso.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIN CAFÉ -->
+        <section class="menu-section" id="sin-cafe" data-menu-section="sin-cafe">
+            <header class="menu-section-header">
+                <span class="menu-section-kicker" data-reveal>También</span>
+                <h2 class="menu-section-title" data-split-chars>Sin café</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Para todos los gustos</p>
+            </header>
+            <ul class="menu-list">
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Chocolate</h3></div>
+                    <p class="menu-item-desc">Caliente o frío, espeso y reconfortante.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Chai latte</h3></div>
+                    <p class="menu-item-desc">Té especiado con leche vaporizada.</p>
+                </li>
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Té e infusiones</h3></div>
+                    <p class="menu-item-desc">Preguntá por las opciones del día.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Limonada con hierbabuena</h3></div>
+                    <p class="menu-item-desc">Fresca, natural y con hielo.</p>
+                </li>
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Smoothie de frutas</h3></div>
+                    <p class="menu-item-desc">Fruta de temporada batida con hielo.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Frappé de chocolate</h3></div>
+                    <p class="menu-item-desc">Chocolate batido con hielo, sin una gota de café.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- DULCES -->
+        <section class="menu-section" id="dulces" data-menu-section="dulces">
+            <header class="menu-section-header">
+                <span class="menu-section-kicker" data-reveal>Algo</span>
+                <h2 class="menu-section-title" data-split-chars>Dulces</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Para acompañar el café</p>
+            </header>
+            <ul class="menu-list">
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Pastel de chocolate</h3></div>
+                    <p class="menu-item-desc">Húmedo, intenso y para compartir (o no).</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Cheesecake</h3></div>
+                    <p class="menu-item-desc">Cremoso, sobre base de galleta.</p>
+                </li>
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Tres leches</h3></div>
+                    <p class="menu-item-desc">El clásico de siempre, bien frío.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Brownie</h3></div>
+                    <p class="menu-item-desc">De chocolate, con el centro suave.</p>
+                </li>
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Rollo de canela</h3></div>
+                    <p class="menu-item-desc">Esponjoso, con glaseado.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Galletas</h3></div>
+                    <p class="menu-item-desc">Ideales para mojar en el café.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SALADOS -->
+        <section class="menu-section" id="salados" data-menu-section="salados">
+            <header class="menu-section-header">
+                <span class="menu-section-kicker" data-reveal>Para</span>
+                <h2 class="menu-section-title" data-split-chars>Salados</h2>
+                <p class="menu-section-subtitle" data-reveal data-delay="2">Cuando hay hambre</p>
+            </header>
+            <ul class="menu-list">
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Croissant de jamón y queso</h3></div>
+                    <p class="menu-item-desc">Hojaldrado y tibio.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Sándwich de pollo</h3></div>
+                    <p class="menu-item-desc">En pan artesanal, con vegetales frescos.</p>
+                </li>
+                <li class="menu-item" data-reveal>
+                    <div class="menu-item-head"><h3 class="menu-item-name">Panini caprese</h3></div>
+                    <p class="menu-item-desc">Tomate, queso mozzarella y albahaca.</p>
+                </li>
+                <li class="menu-item" data-reveal data-delay="1">
+                    <div class="menu-item-head"><h3 class="menu-item-name">Quiche del día</h3></div>
+                    <p class="menu-item-desc">Preguntá por el relleno de hoy.</p>
+                </li>
+            </ul>
+
+            <p class="menu-note" data-reveal>Consultá precios y disponibilidad en barra o <a href="https://wa.me/50586568304" target="_blank" rel="noopener">escribinos por WhatsApp</a>.</p>
+        </section>
+
+    </div>
+</div>
+
+<!-- Fotos de muestra: reemplazar por fotos propias de Momoto -->
+<section class="menu-slider-wrap">
+    <div class="section-head">
+        <span class="panel-label" data-reveal>Del mostrador</span>
+        <h2 class="section-title" data-split-chars>Antojos</h2>
+    </div>
+    <div class="gallery-slider swiper" data-swiper data-reveal data-delay="2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="assets/img/galeria-3.jpg" alt="Capuchino con arte latte visto desde arriba" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-4.jpg" alt="Pastel de chocolate decorado con crema" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-7.jpg" alt="Latte frío en vaso sobre una mesa de madera" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-2.jpg" alt="Leche vertida sobre un café en taza blanca" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-5.jpg" alt="Café con arte latte junto a granos y café molido" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-8.jpg" alt="Taza de café con arte latte sobre fondo oscuro" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+
+</main>
+
+
+<div class="footer-logo-outer" aria-hidden="true">
+    <div class="footer-logo" data-footer-logo>
+        <div class="footer-logo-word"><span>M</span><span>O</span><span>M</span><span>O</span><span>T</span><span>O</span></div>
+        <div class="footer-logo-rule"></div>
+        <div class="footer-logo-script">Café</div>
+    </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-columns">
+            <div class="footer-col">
+                <p class="footer-col-title">Visitanos</p>
+                <div class="footer-address">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=12.136662%2C-86.305481" target="_blank" rel="noopener">Batahola Sur, de Miscelánea La Colmena<br>3 c. al sur, 1 c. al este<br>Managua, Nicaragua</a>
+                </div>
+                <div class="footer-phone">
+                    <a href="https://wa.me/50586568304" target="_blank" rel="noopener">+505 8656 8304</a>
+                </div>
+                <p class="footer-hours">Lunes a domingo<br>8:00 AM – 8:00 PM</p>
+            </div>
+
+            <div class="footer-col">
+                <p class="footer-col-title">Explorá</p>
+                <ul class="footer-links">
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="index.html#momentos">Momentos</a></li>
+                    <li><a href="index.html#visitanos">Cómo llegar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col--cta">
+                <p class="footer-cta-title">¿Se te antojó un café?</p>
+                <p class="footer-cta-text">Escribinos por WhatsApp para cualquier consulta, o seguinos en Instagram para enterarte de todo lo nuevo.</p>
+                <div class="footer-cta-actions">
+                    <a class="btn-outline" href="https://wa.me/50586568304" target="_blank" rel="noopener">WhatsApp</a>
+                    <a class="btn-outline" href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span data-year>2026</span> Momoto Café · Managua, Nicaragua</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://wa.me/50586568304" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+                </a>
+            </div>
+            <p class="footer-tagline">Historias con café</p>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

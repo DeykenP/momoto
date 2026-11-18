@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momoto Café · Batahola Sur, Managua</title>
+    <meta name="description" content="Momoto Café: un rincón para tomarse el café con calma en Batahola Sur, Managua. Abierto de lunes a domingo, de 8 AM a 8 PM.">
+    <meta name="theme-color" content="#121110">
+
+    <meta property="og:title" content="Momoto Café · Batahola Sur, Managua">
+    <meta property="og:description" content="Café, calma y buenas historias. Lunes a domingo, de 8 AM a 8 PM.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_NI">
+    <!-- Al publicar, cambiar por la URL absoluta: https://TU-DOMINIO/assets/img/og.jpg -->
+    <meta property="og:image" content="assets/img/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Ms+Madi&display=swap">
+
+    <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script>document.documentElement.classList.add('js');</script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Momoto Café",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Batahola Sur, de Miscelánea La Colmena 3 c. al sur, 1 c. al este",
+            "addressLocality": "Managua",
+            "addressCountry": "NI"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 12.136662, "longitude": -86.305481 },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "08:00",
+            "closes": "20:00"
+        }],
+        "telephone": "+50586568304",
+        "sameAs": ["https://www.instagram.com/momotocafenic/", "https://www.facebook.com/momotocafenic/"]
+    }
+    </script>
+</head>
+<body class="home">
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- Franja superior (equivalente a la "sister nav" de Onyx) -->
+<div class="ticker" role="region" aria-label="Información rápida">
+    <div class="ticker-track">
+        <div class="ticker-group">
+            <span class="ticker-item" data-open-status hidden><span class="open-dot"></span><span data-open-text></span></span>
+            <span class="ticker-item">Lunes a domingo · 8 AM – 8 PM</span>
+            <span class="ticker-item">Batahola Sur · Managua, Nicaragua</span>
+            <span class="ticker-item">Café y buenas historias</span>
+            <span class="ticker-item"><a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener">@momotocafenic</a></span>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+            <span class="ticker-item" data-open-status hidden><span class="open-dot"></span><span data-open-text></span></span>
+            <span class="ticker-item">Lunes a domingo · 8 AM – 8 PM</span>
+            <span class="ticker-item">Batahola Sur · Managua, Nicaragua</span>
+            <span class="ticker-item">Café y buenas historias</span>
+            <span class="ticker-item"><a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" tabindex="-1">@momotocafenic</a></span>
+        </div>
+    </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-inner">
+        <a href="index.html" class="logo header-logo" aria-label="Momoto Café, inicio">
+            <span class="logo-word" aria-hidden="true">Momoto</span>
+            <span class="logo-rule" aria-hidden="true"></span>
+            <span class="logo-script" aria-hidden="true">Café</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Navegación principal">
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="menu.html" class="nav-link">Menú</a>
+            <a href="#momentos" class="nav-link">Momentos</a>
+            <a href="#visitanos" class="nav-link">Visitanos</a>
+            <a href="https://wa.me/50586568304" class="nav-cta" target="_blank" rel="noopener">Escribinos</a>
+        </nav>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+            <span class="nav-toggle-line"></span>
+            <span class="nav-toggle-line"></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobile-menu-nav" aria-label="Navegación móvil">
+            <a href="#nosotros" class="mobile-link">Nosotros</a>
+            <a href="menu.html" class="mobile-link">Menú</a>
+            <a href="#momentos" class="mobile-link">Momentos</a>
+            <a href="#visitanos" class="mobile-link">Visitanos</a>
+            <a href="https://wa.me/50586568304" class="mobile-link" target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+        <p class="mobile-menu-script" aria-hidden="true">Historias con café</p>
+        <div class="mobile-menu-footer">
+            <a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://wa.me/50586568304" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="site-main" id="main">
+
+<!-- ===========================================
+     ESCENARIO FIJO
+     Cada capa corresponde a una sección (data-layer = data-section).
+     Para cambiar una foto, reemplazá el archivo en assets/img/
+     con el mismo nombre. --focus ajusta el encuadre (x y).
+     También acepta <video muted loop playsinline> en lugar de <img>.
+     =========================================== -->
+<div class="stage" id="stage" aria-hidden="true">
+    <div class="stage-layer is-active" data-layer="hero" style="--focus: 62% 50%">
+        <img src="assets/img/hero.jpg" alt="" fetchpriority="high" decoding="async">
+    </div>
+    <div class="stage-layer" data-layer="nosotros" style="--focus: 50% 50%">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/bienvenida.jpg" alt="" decoding="async">
+    </div>
+    <div class="stage-layer" data-layer="mananas" style="--focus: 40% 50%">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/mananas.jpg" alt="" decoding="async">
+    </div>
+    <div class="stage-layer" data-layer="tardes" style="--focus: 45% 50%">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/tardes.jpg" alt="" decoding="async">
+    </div>
+    <div class="stage-layer" data-layer="noches" style="--focus: 60% 50%">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/noches.jpg" alt="" decoding="async">
+    </div>
+    <div class="stage-layer" data-layer="visitanos" style="--focus: 50% 50%">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="assets/img/visitanos.jpg" alt="" decoding="async">
+    </div>
+    <div class="stage-overlay"></div>
+</div>
+
+
+<!-- HERO -->
+<section class="hero" id="inicio" data-section="hero">
+    <div class="hero-content">
+        <h1 class="hero-lockup">
+            <span class="hero-word" data-split-chars data-char-delay="110" data-char-start="150">Momoto</span>
+            <span class="hero-rule" data-draw style="transition-delay: 0.75s"></span>
+            <span class="hero-script" data-write style="transition-delay: 1.05s">Café</span>
+        </h1>
+        <p class="hero-subtitle" data-reveal data-delay="4">Batahola Sur · Managua, Nicaragua</p>
+    </div>
+
+    <a class="hero-scroll" href="#nosotros" data-reveal data-delay="4" aria-label="Bajar a Nosotros">
+        <span>Descubrí</span>
+        <div class="scroll-line"></div>
+    </a>
+</section>
+
+
+<!-- BIENVENIDA -->
+<section class="panel panel--nosotros" id="nosotros" data-section="nosotros">
+    <div class="panel-content">
+        <span class="panel-label" data-reveal>Bienvenidos a</span>
+        <h2 class="panel-title" data-split-chars>Momoto Café</h2>
+        <p class="panel-text" data-reveal data-delay="2">Un rincón tranquilo en Batahola Sur, hecho para tomarse el café con calma. En Momoto preparamos cada taza con cuidado y la servimos sin prisa, para que la disfrutés solo, en pareja o con amigos. Abrimos todos los días, de 8 de la mañana a 8 de la noche, con la puerta abierta a las buenas conversaciones.</p>
+        <a href="#visitanos" class="panel-cta" data-reveal data-delay="3">Cómo llegar</a>
+    </div>
+</section>
+
+
+<!-- MAÑANAS -->
+<section class="panel panel--mananas" data-section="mananas">
+    <div class="panel-content">
+        <span class="panel-label" data-reveal>Todos los días desde las 8 AM</span>
+        <h2 class="panel-title" data-split-chars>Mañanas</h2>
+        <p class="panel-text" data-reveal data-delay="2">El primer café del día merece su momento. Un espresso intenso, un capuchino cremoso o un americano para arrancar despacio, con algo dulce al lado. Las mañanas en Momoto son frescas, luminosas y sin apuros: perfectas para empezar el día con calma o para esa reunión temprano.</p>
+        <a href="menu.html#cafe" class="panel-cta" data-reveal data-delay="3">Ver el menú</a>
+    </div>
+</section>
+
+
+<!-- TARDES -->
+<section class="panel panel--tardes" data-section="tardes">
+    <div class="panel-content">
+        <span class="panel-label" data-reveal>Para quedarse un rato</span>
+        <h2 class="panel-title" data-split-chars>Tardes</h2>
+        <p class="panel-text" data-reveal data-delay="2">Cuando el calor de Managua aprieta, nada como una bebida fría y un rincón fresco. Traé la compu, los apuntes o a tus amigos: las tardes en Momoto están hechas para trabajar, estudiar, ponerse al día o simplemente quedarse un rato más.</p>
+        <a href="menu.html#frios" class="panel-cta" data-reveal data-delay="3">Bebidas frías</a>
+    </div>
+</section>
+
+
+<!-- AL CAER LA TARDE -->
+<section class="panel panel--noches" data-section="noches">
+    <div class="panel-content">
+        <span class="panel-label" data-reveal>Hasta las 8 PM</span>
+        <h2 class="panel-title" data-split-chars>Al caer la tarde</h2>
+        <p class="panel-text" data-reveal data-delay="2">Cuando baja el sol, Momoto se vuelve más cálido e íntimo. Es la hora del postre para compartir, del último café del día y de las conversaciones largas. Porque hay historias que solo se cuentan con una taza de por medio.</p>
+        <a href="menu.html#dulces" class="panel-cta" data-reveal data-delay="3">Postres y antojos</a>
+    </div>
+</section>
+
+
+<!-- VISITANOS -->
+<section class="panel panel--visit" id="visitanos" data-section="visitanos">
+    <div class="panel-content">
+        <span class="panel-label" data-reveal>Te esperamos</span>
+        <h2 class="panel-title" data-split-chars>Visitanos</h2>
+
+        <div class="visit-details" data-reveal data-delay="2">
+            <div class="visit-item">
+                <span class="visit-key">Dirección</span>
+                <p>Batahola Sur, de Miscelánea La Colmena, 3 c. al sur, 1 c. al este<br>Managua, Nicaragua</p>
+            </div>
+            <div class="visit-item">
+                <span class="visit-key">Horario</span>
+                <p>Lunes a domingo<br>8:00 AM – 8:00 PM</p>
+                <p class="visit-status" data-open-status="short" hidden><span class="open-dot"></span><span data-open-text></span></p>
+            </div>
+        </div>
+
+        <div class="panel-ctas" data-reveal data-delay="3">
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=12.136662%2C-86.305481" class="panel-cta" target="_blank" rel="noopener">Google Maps</a>
+            <a href="https://www.waze.com/ul?ll=12.136662%2C-86.305481&amp;navigate=yes&amp;zoom=17" class="panel-cta" target="_blank" rel="noopener">Waze</a>
+            <a href="https://wa.me/50586568304" class="panel-cta" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+    </div>
+
+    <div class="visit-map" data-reveal data-delay="2">
+        <iframe
+            title="Mapa: ubicación de Momoto Café en Batahola Sur, Managua"
+            src="https://maps.google.com/maps?q=12.136662,-86.305481&amp;z=16&amp;hl=es&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+    </div>
+</section>
+
+
+<!-- MOMENTOS (galería) -->
+<section class="section gallery" id="momentos">
+    <div class="section-head">
+        <span class="panel-label" data-reveal>@momotocafenic</span>
+        <h2 class="section-title" data-split-chars>Momentos</h2>
+        <p class="section-text" data-reveal data-delay="2">Lo que pasa en Momoto, taza por taza. Seguinos en Instagram para ver lo nuevo de la barra y enterarte de todo primero.</p>
+    </div>
+
+    <!-- Fotos de muestra: reemplazar por fotos propias de Momoto (assets/img/galeria-*.jpg) -->
+    <div class="gallery-slider swiper" data-swiper data-reveal data-delay="2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="assets/img/galeria-1.jpg" alt="Dos personas brindando con tazas de café con arte latte" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-2.jpg" alt="Leche vertida sobre un café en taza blanca" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-3.jpg" alt="Capuchino con arte latte visto desde arriba" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-4.jpg" alt="Pastel de chocolate decorado con crema" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-5.jpg" alt="Café con arte latte junto a granos y café molido" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-6.jpg" alt="Barista vertiendo leche para hacer arte latte" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-7.jpg" alt="Latte frío en vaso sobre una mesa de madera" loading="lazy" decoding="async"></div>
+            <div class="swiper-slide"><img src="assets/img/galeria-8.jpg" alt="Taza de café con arte latte sobre fondo oscuro" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="section-cta" data-reveal>
+        <a class="btn-outline" href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Seguinos en Instagram
+        </a>
+    </div>
+</section>
+
+</main>
+
+
+<!-- LOGO ANIMADO -->
+<div class="footer-logo-outer" aria-hidden="true">
+    <div class="footer-logo" data-footer-logo>
+        <div class="footer-logo-word"><span>M</span><span>O</span><span>M</span><span>O</span><span>T</span><span>O</span></div>
+        <div class="footer-logo-rule"></div>
+        <div class="footer-logo-script">Café</div>
+    </div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-columns">
+            <div class="footer-col">
+                <p class="footer-col-title">Visitanos</p>
+                <div class="footer-address">
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=12.136662%2C-86.305481" target="_blank" rel="noopener">Batahola Sur, de Miscelánea La Colmena<br>3 c. al sur, 1 c. al este<br>Managua, Nicaragua</a>
+                </div>
+                <div class="footer-phone">
+                    <a href="https://wa.me/50586568304" target="_blank" rel="noopener">+505 8656 8304</a>
+                </div>
+                <p class="footer-hours">Lunes a domingo<br>8:00 AM – 8:00 PM</p>
+            </div>
+
+            <div class="footer-col">
+                <p class="footer-col-title">Explorá</p>
+                <ul class="footer-links">
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="#momentos">Momentos</a></li>
+                    <li><a href="#visitanos">Cómo llegar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col--cta">
+                <p class="footer-cta-title">¿Se te antojó un café?</p>
+                <p class="footer-cta-text">Escribinos por WhatsApp para cualquier consulta, o seguinos en Instagram para enterarte de todo lo nuevo.</p>
+                <div class="footer-cta-actions">
+                    <a class="btn-outline" href="https://wa.me/50586568304" target="_blank" rel="noopener">WhatsApp</a>
+                    <a class="btn-outline" href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span data-year>2026</span> Momoto Café · Managua, Nicaragua</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/momotocafenic/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://wa.me/50586568304" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+                </a>
+            </div>
+            <p class="footer-tagline">Historias con café</p>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
