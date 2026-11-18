@@ -7,13 +7,14 @@
 
     var BUSINESS = {
         timeZone: 'America/Managua',
-        // Lunes a domingo, 8:00 a 20:00 (según el rótulo de la puerta)
+        // Lunes a domingo, 8:00 a 20:00 (rótulo de la puerta)
         openHour: 8,
         closeHour: 20
     };
 
     var reduceMotion = window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = !!(navigator.connection && navigator.connection.saveData);
     var hasIO = 'IntersectionObserver' in window;
 
 
@@ -30,7 +31,7 @@
         var start = parseInt(el.getAttribute('data-char-start'), 10) || 0;
         var charIndex = 0;
 
-        // Texto legible para lectores de pantalla; las letras sueltas se ocultan.
+        // Texto completo para lectores de pantalla; las letras sueltas se ocultan.
         var readable = document.createElement('span');
         readable.className = 'sr-only';
         readable.textContent = text;
@@ -65,10 +66,6 @@
         el.classList.add('is-split');
     });
 
-    function showChars(el) {
-        el.querySelectorAll('.char').forEach(function (c) { c.classList.add('is-visible'); });
-    }
-
     function observeOnce(selector, onVisible, options) {
         var els = document.querySelectorAll(selector);
         if (!els.length) return;
@@ -100,33 +97,54 @@
         });
     }
 
-    observeOnce('[data-split-chars]', showChars);
-
-
-    // -----------------------------------------------
-    // Apariciones al hacer scroll (fade, línea, script)
-    // -----------------------------------------------
-
-    observeOnce('[data-reveal], [data-draw], [data-write]', function (el) {
-        el.classList.add('is-visible');
+    observeOnce('[data-split-chars]', function (el) {
+        el.querySelectorAll('.char').forEach(function (c) { c.classList.add('is-visible'); });
     });
 
 
     // -----------------------------------------------
-    // Escenario fijo: fundido entre fotos por sección
+    // Apariciones al hacer scroll y logo animado
+    // -----------------------------------------------
+
+    observeOnce('[data-reveal], [data-write]', function (el) {
+        el.classList.add('is-visible');
+    });
+
+    observeOnce('[data-logo-anim]', function (el) {
+        el.classList.add('is-playing');
+    }, { threshold: 0.3 });
+
+
+    // -----------------------------------------------
+    // Escenario fijo: videos que se funden por sección
     // -----------------------------------------------
 
     var layers = Array.prototype.slice.call(document.querySelectorAll('.stage-layer'));
     var sections = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+    var portraitQuery = window.matchMedia('(max-aspect-ratio: 1/1)');
+    var allowVideo = !reduceMotion && !saveData;
     var activeLayer = null;
 
+    function layerVideo(layer) {
+        return layer ? layer.querySelector('video[data-land]') : null;
+    }
+
     function loadLayer(layer) {
-        if (!layer) return;
-        layer.querySelectorAll('[data-src]').forEach(function (media) {
-            media.src = media.getAttribute('data-src');
-            media.removeAttribute('data-src');
-            if (media.tagName === 'SOURCE') media.parentNode.load();
-        });
+        var video = layerVideo(layer);
+        if (!video || !allowVideo) return;
+        var src = video.getAttribute(portraitQuery.matches ? 'data-port' : 'data-land');
+        if (video.getAttribute('data-current') === src) return;
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute('data-current', src);
+        video.src = src;
+    }
+
+    function playLayer(layer) {
+        var video = layerVideo(layer);
+        if (!video || !allowVideo) return;
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
     }
 
     function activateLayer(id) {
@@ -135,27 +153,23 @@
 
         layers.forEach(function (layer, i) {
             var isActive = layer.getAttribute('data-layer') === id;
-            var video = layer.querySelector('video');
+            layer.classList.toggle('is-active', isActive);
 
             if (isActive) {
                 loadLayer(layer);
-                loadLayer(layers[i + 1]); // precarga la siguiente
-            }
-
-            layer.classList.toggle('is-active', isActive);
-
-            if (video) {
-                if (isActive) {
-                    var p = video.play();
-                    if (p && p.catch) p.catch(function () {});
-                } else {
-                    video.pause();
-                }
+                loadLayer(layers[i + 1]); // la siguiente queda lista
+                playLayer(layer);
+            } else {
+                var video = layerVideo(layer);
+                if (video) video.pause();
             }
         });
     }
 
     if (sections.length && layers.length) {
+        // El primer video arranca de inmediato.
+        activateLayer(sections[0].getAttribute('data-section'));
+
         if (hasIO) {
             var ratios = {};
             var sectionObserver = new IntersectionObserver(function (entries) {
@@ -164,7 +178,7 @@
                         entry.isIntersecting ? entry.intersectionRatio : 0;
                 });
 
-                // La sección más visible manda.
+                // Manda la sección más visible.
                 var best = null;
                 var bestRatio = 0;
                 Object.keys(ratios).forEach(function (key) {
@@ -174,17 +188,42 @@
                     }
                 });
 
-                if (best && bestRatio >= 0.3) activateLayer(best);
+                if (best && bestRatio >= 0.3) {
+                    activateLayer(best);
+                    playLayer(layers.filter(function (l) { return l.getAttribute('data-layer') === best; })[0]);
+                } else if (bestRatio < 0.08) {
+                    // Ninguna sección con video a la vista (galería, footer): pausa.
+                    layers.forEach(function (layer) {
+                        var video = layerVideo(layer);
+                        if (video) video.pause();
+                    });
+                }
             }, { threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1] });
 
             sections.forEach(function (section) { sectionObserver.observe(section); });
-        } else {
-            activateLayer(sections[0].getAttribute('data-section'));
         }
 
-        // Cuando la página terminó de cargar, trae el resto de fotos sin bloquear.
-        window.addEventListener('load', function () {
-            setTimeout(function () { layers.forEach(loadLayer); }, 1200);
+        // Si cambia la orientación, cambia el corte del video (16:9 o 9:16).
+        var onOrientation = function () {
+            layers.forEach(function (layer) {
+                var video = layerVideo(layer);
+                if (video && video.getAttribute('data-current')) {
+                    loadLayer(layer);
+                    if (layer.classList.contains('is-active')) playLayer(layer);
+                }
+            });
+        };
+        if (portraitQuery.addEventListener) portraitQuery.addEventListener('change', onOrientation);
+        else if (portraitQuery.addListener) portraitQuery.addListener(onOrientation);
+
+        // Pausa el video cuando la pestaña no está visible.
+        document.addEventListener('visibilitychange', function () {
+            layers.forEach(function (layer) {
+                var video = layerVideo(layer);
+                if (!video) return;
+                if (document.hidden) video.pause();
+                else if (layer.classList.contains('is-active')) playLayer(layer);
+            });
         });
     }
 
@@ -194,11 +233,11 @@
     // -----------------------------------------------
 
     var header = document.getElementById('siteHeader');
-    var ticker = document.querySelector('.ticker');
+    var strip = document.querySelector('.strip');
 
     function onScroll() {
         if (!header) return;
-        var threshold = ticker ? ticker.offsetHeight : 40;
+        var threshold = strip ? strip.offsetHeight : 40;
         header.classList.toggle('is-scrolled', window.scrollY > threshold);
     }
 
@@ -240,7 +279,7 @@
         });
 
         window.addEventListener('resize', function () {
-            if (window.innerWidth > 768 && mobileMenu.classList.contains('is-open')) setMenu(false);
+            if (window.innerWidth > 820 && mobileMenu.classList.contains('is-open')) setMenu(false);
         });
     }
 
@@ -283,12 +322,29 @@
 
 
     // -----------------------------------------------
+    // Scroll con compensación del header (y la nav del menú)
+    // -----------------------------------------------
+
+    function stickyOffset() {
+        var headerHeight = parseInt(getComputedStyle(document.documentElement)
+            .getPropertyValue('--header-height'), 10) || 72;
+        return headerHeight + (menuNav ? menuNav.offsetHeight : 0);
+    }
+
+    function scrollToEl(target, smooth) {
+        var top = target.getBoundingClientRect().top + window.scrollY;
+        // Los paneles de pantalla completa se alinean al borde superior.
+        var y = target.hasAttribute('data-section') ? top : top - stickyOffset();
+        window.scrollTo({ top: y, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+    }
+
+
+    // -----------------------------------------------
     // Pestañas del menú (calientes / fríos)
     // -----------------------------------------------
 
     function activateTab(group, tab, focus) {
-        var tabs = group.querySelectorAll('[role="tab"]');
-        tabs.forEach(function (t) {
+        group.querySelectorAll('[role="tab"]').forEach(function (t) {
             var isActive = t === tab;
             t.classList.toggle('is-active', isActive);
             t.setAttribute('aria-selected', String(isActive));
@@ -318,34 +374,31 @@
             });
         });
 
-        // Enlaces del tipo menu.html#frios abren la pestaña correspondiente.
+        // menu.html#frios o #calientes: abre la pestaña y baja directo a ella.
         var hash = window.location.hash.replace('#', '');
         var fromHash = hash && group.querySelector('[data-tab-hash="' + hash + '"]');
-        if (fromHash) activateTab(group, fromHash, false);
+        if (fromHash) {
+            activateTab(group, fromHash, false);
+            window.addEventListener('load', function () {
+                var top = group.getBoundingClientRect().top + window.scrollY - stickyOffset() - 24;
+                window.scrollTo({ top: top, behavior: 'auto' });
+            });
+        }
     });
 
 
     // -----------------------------------------------
-    // Logo animado del footer (se reproduce una vez)
-    // -----------------------------------------------
-
-    observeOnce('[data-footer-logo]', function (el) {
-        el.classList.add('is-playing');
-    }, { threshold: 0.35 });
-
-
-    // -----------------------------------------------
-    // Sliders de fotos (Swiper)
+    // Galerías (Swiper)
     // -----------------------------------------------
 
     if (window.Swiper) {
         document.querySelectorAll('[data-swiper]').forEach(function (el) {
             new window.Swiper(el, {
-                slidesPerView: 1.5,
-                spaceBetween: 8,
+                slidesPerView: 1.25,
+                spaceBetween: 10,
                 loop: true,
                 grabCursor: true,
-                speed: reduceMotion ? 0 : 700,
+                speed: reduceMotion ? 0 : 800,
                 keyboard: { enabled: true, onlyInViewport: true },
                 a11y: {
                     prevSlideMessage: 'Foto anterior',
@@ -361,9 +414,9 @@
                     clickable: true
                 },
                 breakpoints: {
-                    0: { slidesPerView: 1.15, spaceBetween: 6 },
-                    768: { slidesPerView: 1.5, spaceBetween: 12 },
-                    1400: { slidesPerView: 2.15, spaceBetween: 14 }
+                    640: { slidesPerView: 2.2, spaceBetween: 12 },
+                    1024: { slidesPerView: 3.2, spaceBetween: 14 },
+                    1600: { slidesPerView: 4.2, spaceBetween: 14 }
                 }
             });
         });
@@ -371,14 +424,8 @@
 
 
     // -----------------------------------------------
-    // Scroll suave para anclas (compensa header + nav del menú)
+    // Scroll suave para anclas de la misma página
     // -----------------------------------------------
-
-    function stickyOffset() {
-        var headerHeight = parseInt(getComputedStyle(document.documentElement)
-            .getPropertyValue('--header-height'), 10) || 72;
-        return headerHeight + (menuNav ? menuNav.offsetHeight : 0);
-    }
 
     document.querySelectorAll('a[href*="#"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
@@ -395,12 +442,7 @@
             if (!target) return;
 
             e.preventDefault();
-            var top = target.getBoundingClientRect().top + window.scrollY;
-            var y = top - stickyOffset();
-            // Los paneles de pantalla completa se alinean al borde superior.
-            if (target.hasAttribute('data-section')) y = top;
-
-            window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+            scrollToEl(target, true);
             if (history.replaceState) history.replaceState(null, '', hash);
         });
     });
@@ -445,7 +487,7 @@
         var label = isOpen
             ? 'Abierto ahora · hasta las ' + formatHour(BUSINESS.closeHour)
             : 'Cerrado · abrimos a las ' + formatHour(BUSINESS.openHour);
-        // Versión corta para lugares donde el horario ya está escrito al lado.
+        // Versión corta donde el horario ya está escrito al lado.
         var shortLabel = isOpen ? 'Abierto ahora' : 'Cerrado ahora';
 
         els.forEach(function (el) {

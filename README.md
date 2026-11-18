@@ -2,16 +2,15 @@
 
 Sitio estático (HTML + CSS + JavaScript, sin compilación) para **Momoto Café**, Batahola Sur, Managua.
 
-El diseño, las transiciones y las animaciones siguen el estilo de [onyxatthepreserve.com](https://onyxatthepreserve.com), con la identidad de Momoto:
+**Dirección de diseño:** minimalista y elegante, al estilo de un restaurante con estrellas Michelin. La paleta sale del logo (negro y blanco), la tipografía es **Raleway** y la script de marca se usa solo como acento. Las transiciones y animaciones siguen el estilo de [onyxatthepreserve.com](https://onyxatthepreserve.com):
 
-- **Fondo fijo** con fotos que se funden suavemente al pasar de una sección a otra, con un zoom lento.
-- **Titulares que aparecen letra por letra** con desenfoque.
-- **Textos y botones que suben** al entrar en pantalla.
-- **Header transparente** que toma fondo oscuro con desenfoque al hacer scroll.
-- **Franja superior terracota** con horario, ubicación y estado "Abierto ahora / Cerrado" según la hora de Managua.
-- **Logo animado** al final: MOMOTO aparece letra por letra, la línea se dibuja y "Café" se escribe.
-- **Menú móvil** a pantalla completa, **galería deslizable** y **página de menú** con pestañas y navegación que sigue el scroll.
-- Respeta la preferencia de "reducir movimiento" del sistema.
+- **Fondo fijo con videos oficiales** que se funden al pasar de una sección a otra. Están en cámara lenta y en bucle sin corte visible.
+- **Logo oficial animado:** "MOMOTO" aparece letra por letra con desenfoque, la línea se dibuja y "Café" se escribe. Pasa en la portada y al final de cada página.
+- **Titulares** letra por letra con desenfoque, y textos que suben al entrar en pantalla.
+- **Header transparente** que toma fondo negro con desenfoque al hacer scroll.
+- **Franja superior** con el horario y el estado "Abierto ahora / Cerrado" según la hora de Managua.
+- **Menú móvil** a pantalla completa, **galería** deslizable y **carta** con pestañas y navegación que sigue el scroll.
+- **Rendimiento:** en computadora se cargan videos 16:9 y en celular videos 9:16. Solo se reproduce el de la sección visible, se pausa al salir y se precarga el siguiente. Con "reducir movimiento" o "ahorro de datos" se muestran solo los pósters.
 
 ## Ver el sitio en tu computadora
 
@@ -19,104 +18,90 @@ El diseño, las transiciones y las animaciones siguen el estilo de [onyxatthepre
 python3 -m http.server 8000
 ```
 
-Luego abrí <http://localhost:8000>.
+Luego abre <http://localhost:8000>.
 
 ## Estructura
 
 ```
-index.html                 Inicio: hero, Bienvenidos, Mañanas, Tardes, Al caer la tarde, Visitanos (mapa), Momentos (galería)
-menu.html                  Menú: café (calientes/fríos), sin café, dulces, salados
-assets/css/styles.css      Sistema de diseño: colores, tipografía, animaciones
-assets/js/app.js           Animaciones e interacciones (sin dependencias, salvo Swiper para la galería)
-assets/img/                Fotos, favicon e imagen para compartir en redes (og.jpg)
-assets/vendor/swiper/      Swiper 11.1.14 (galería)
+index.html                  Inicio: portada, Bienvenidos, La barra, Iced latte, Coffee Spritz, Visítanos (mapa), Momentos
+menu.html                   Carta: café (calientes/fríos + ficha de origen), de la casa, sin café, para acompañar
+assets/css/styles.css       Sistema de diseño (colores, tipografía, animaciones)
+assets/js/app.js            Animaciones, videos e interacciones
+assets/video/               Videos de fondo: NOMBRE-land.mp4 (16:9) y NOMBRE-port.mp4 (9:16)
+assets/img/                 Pósters, fotos, logo (blanco y negro), favicon e imagen para redes (og.jpg)
+assets/vendor/swiper/       Swiper 11.1.14 (galería)
 ```
 
-## Identidad visual
+## Identidad
 
-La paleta y la tipografía salen de las fotos del rótulo y la fachada del local:
+- **Logo:** vectores exactos del PDF oficial. `assets/img/logo-blanco.svg` y `logo-negro.svg` sirven para usar en otros lados. En la portada y el footer el logo está separado en piezas para poder animarlo.
+- **Colores:** negro `#0b0b0b`, blanco hueso `#f4f2ed` y papel `#f6f4ef` para la carta. Todo está en `:root`, al inicio de `assets/css/styles.css`.
+- **Tipografías:** Raleway (Google Fonts) y **Beautifully Delicious Script**.
+  - Beautifully Delicious Script es una fuente **comercial** (My Creative Land). En el logo se usa el trazo vectorial del PDF.
+  - Para los acentos en script del sitio hace falta su **licencia web**. Mientras tanto se usa Ms Madi, que es libre y muy parecida.
+  - Cuando tengan el archivo `.woff2`, colóquenlo en `assets/fonts/` y descomenten el bloque `@font-face` al inicio de `styles.css`.
 
-| Rol | Color | De dónde sale |
+## Videos y fotos
+
+Todo el material viene del álbum oficial de Momoto. Cada sección usa un tramo sin textos sobreimpresos, en cámara lenta y con un fundido en el punto de bucle.
+
+| Sección | Video | Contenido |
 | --- | --- | --- |
-| Fondo | `#121110` | Rótulo negro |
-| Acento | `#c9ab74` | Letras doradas de "MOMOTO" |
-| Texto | `#f2ece2` | Script "Café" |
-| Franja superior | `#b65a2e` | Columnas terracota de la entrada |
-| Fondo del menú | `#ece6da` | Paredes de estuco |
+| Portada | `hero` | Vertido del AeroPress |
+| Bienvenidos | `bienvenida` | Latte y agua en bandeja |
+| La barra | `barra` | V60 |
+| Iced latte | `frios` | Iced latte entre vasos de Momoto |
+| Coffee Spritz | `spritz-port.jpg` (foto) | Coffee Spritz |
+| Visítanos | `visitanos` | Vaso de Momoto saliendo por la puerta |
 
-- **Tipografías** (Google Fonts): **Montserrat** para la palabra MOMOTO, títulos y textos, y **Ms Madi** para el script "Café". Se eligieron comparándolas con el rótulo.
-- **Logo:** está recreado en HTML/CSS (MOMOTO, la línea y "Café"). Si tienen el logo original en SVG o PNG, se puede usar ese.
+**Para cambiar un video:** exporta dos versiones con el mismo nombre, ambas en MP4 (H.264), sin audio, de 5 a 10 segundos:
 
-Todos los colores están en `:root` al inicio de `assets/css/styles.css`.
+- `NOMBRE-land.mp4`: 1600×900
+- `NOMBRE-port.mp4`: 720×1280
 
-## Cómo cambiar las fotos
+Exporta también sus pósters `NOMBRE-land.jpg` y `NOMBRE-port.jpg` (primer cuadro del video). Por ejemplo:
 
-**Todas las fotos actuales son de muestra (Unsplash).** Para poner las de Momoto, reemplazá cada archivo en `assets/img/` por uno con el mismo nombre:
-
-| Archivo | Dónde aparece |
-| --- | --- |
-| `hero.jpg` | Fondo de la portada |
-| `bienvenida.jpg` | Fondo de "Bienvenidos a Momoto Café" |
-| `mananas.jpg` | Fondo de "Mañanas" |
-| `tardes.jpg` | Fondo de "Tardes" |
-| `noches.jpg` | Fondo de "Al caer la tarde" |
-| `visitanos.jpg` | Fondo de "Visitanos" |
-| `menu-hero.jpg` | Portada de la página de menú |
-| `galeria-1.jpg` … `galeria-8.jpg` | Galería "Momentos" y "Antojos" |
-| `og.jpg` | Vista previa al compartir el enlace (1200×630) |
-
-Recomendado: fondos de unos 2000 px de ancho y galería de unos 1400 px, en JPG de menos de 400 KB. El encuadre de cada fondo se ajusta con `--focus` en `index.html` (por ejemplo, `style="--focus: 40% 50%"`).
-
-**Videos de fondo (por ejemplo, un Reel):** dentro de la capa, reemplazá el `<img>` por:
-
-```html
-<video muted loop playsinline poster="assets/img/hero.jpg">
-    <source data-src="assets/video/hero.mp4" type="video/mp4">
-</video>
+```bash
+ffmpeg -i original.mp4 -ss 3 -t 8 -an -vf "crop=iw:iw*9/16,scale=1600:900" -c:v libx264 -crf 22 -preset slow -movflags +faststart -pix_fmt yuv420p hero-land.mp4
 ```
 
-El video se carga y se reproduce solo cuando su sección está en pantalla.
+Las fotos de la galería son `assets/img/galeria-1.jpg` a `galeria-8.jpg` (900×1125, formato 4:5).
 
 ## Horario, dirección y WhatsApp
 
-- **Textos visibles:** en `index.html` y `menu.html` (buscá `8:00 AM`, `Batahola` o `50586568304`).
-- **"Abierto ahora / Cerrado":** se calcula con la hora de Managua según `BUSINESS` al inicio de `assets/js/app.js`.
+- **Textos visibles:** en `index.html` y `menu.html` (busca `8:00 AM`, `Batahola` o `50586568304`).
+- **"Abierto ahora / Cerrado":** `BUSINESS` al inicio de `assets/js/app.js`.
 - **Datos para Google:** bloque `application/ld+json` en `index.html`.
 
-## Menú
+## Carta
 
-El menú de `menu.html` es **un ejemplo genérico, sin precios**, marcado con el comentario `MENÚ DE EJEMPLO`. Para agregar un precio a un producto:
+La carta de `menu.html` es **preliminar y no tiene precios**.
+
+- **Salen del material oficial:** espresso, latte, V60, AeroPress, iced latte, Coffee Spritz y la ficha de origen (Nicaragua · Finca Bella Vista · Matagalpa · Lavado · Jania Arauz).
+- **Son de ejemplo:** el resto de los productos.
+
+Para agregar un precio, pon debajo de la descripción:
 
 ```html
-<div class="menu-item-head">
-    <h3 class="menu-item-name">Capuchino</h3>
-    <span class="menu-item-dots"></span><span class="menu-item-price">C$ 90</span>
-</div>
+<span class="menu-item-price">C$ 90</span>
 ```
 
-Los enlaces `menu.html#frios` y `menu.html#calientes` abren la pestaña correspondiente.
+Los enlaces `menu.html#frios` y `menu.html#calientes` abren directamente esa pestaña.
 
 ## Publicar
 
-Es un sitio estático: funciona en cualquier hosting.
-
-- **GitHub Pages:** en el repositorio, *Settings → Pages → Deploy from a branch*, elegir la rama y la carpeta raíz.
-- **Netlify o Vercel:** subir la carpeta tal cual.
-
-Al publicar, cambiá `og:image` en ambos HTML por la URL absoluta de `og.jpg` para que la vista previa funcione en WhatsApp y Facebook.
+Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify o Vercel. Al publicar, cambia `og:image` en ambos HTML por la URL absoluta de `og.jpg` para que la vista previa funcione en WhatsApp y redes.
 
 ## Pendiente de confirmar
 
-- **Fotos:** reemplazar las fotos de muestra por fotos propias.
-- **Menú:** reemplazar el menú de ejemplo por el real, con precios.
+- **Carta completa y precios.**
 - **WhatsApp:** se usa `+505 8656 8304`, que aparece en un listado público junto a la dirección de La Colmena. Otro listado muestra `+505 8284 4208`.
-- **Dirección:** "Batahola Sur, de Miscelánea La Colmena, 3 c. al sur, 1 c. al este" (Facebook y TripAdvisor). El mapa usa las coordenadas de Waze (12.136662, -86.305481).
-- **Horario:** "Lunes a domingo, 8 AM – 8 PM", del rótulo de la puerta.
-- **Textos:** son un borrador; ajustarlos a la voz de Momoto.
+- **Dirección:** "Batahola Sur, de Miscelánea La Colmena, 3 c. al sur, 1 c. al este". El mapa usa las coordenadas de Waze (12.136662, -86.305481).
+- **Licencia web de Beautifully Delicious Script**, para reemplazar la fuente alternativa.
 
 ## Créditos
 
-- Fotos de muestra: [Unsplash](https://unsplash.com) (licencia Unsplash). IDs: `photo-1442512595331-e89e73853f31`, `photo-1600093463592-8e36ae95ef56`, `photo-1497515114629-f71d768fd07c`, `photo-1461023058943-07fcbe16d735`, `photo-1501339847302-ac426a4a7cbb`, `photo-1445116572660-236099ec97a0`, `photo-1461988091159-192b6df7054f`, `photo-1495474472287-4d71bcdd2085`, `photo-1541167760496-1628856ab772`, `photo-1572442388796-11668a67e53d`, `photo-1578985545062-69928b1d9587`, `photo-1497935586351-b67a49e012bf`, `photo-1514066558159-fc8c737ef259`, `photo-1517701604599-bb29b565090c`, `photo-1506372023823-741c83b836fe`.
+- Fotos y videos: material oficial de Momoto Café.
 - [Swiper](https://swiperjs.com) 11.1.14, licencia MIT (`assets/vendor/swiper/LICENSE`).
 - Íconos: [Feather](https://feathericons.com) (MIT) y [Tabler Icons](https://tabler.io/icons) (MIT, ícono de WhatsApp).
-- Fuentes: Montserrat y Ms Madi, SIL Open Font License, servidas por Google Fonts.
+- Fuentes: Raleway y Ms Madi (SIL Open Font License), servidas por Google Fonts.
