@@ -89,13 +89,17 @@ Todo el material viene del álbum oficial de Momoto.
 | Bienvenidos | `bienvenida` | Latte y agua en bandeja |
 | La barra | `barra` | V60 |
 | Iced latte | `frios` | Iced latte entre vasos de Momoto |
-| Coffee Spritz | `spritz-port.jpg` (foto) | Coffee Spritz |
+| Coffee Spritz | `spritz` | Copa de Coffee Spritz mientras se revuelve |
 | Visítanos | `visitanos` | Vaso de Momoto saliendo por la puerta |
+
+Cada tramo se eligió sin los textos sobreimpresos del Reel original. En el Coffee Spritz se unieron los dos únicos tramos limpios (0.00–1.12 s y 5.55–6.42 s del video), en cámara lenta a 0.4×.
 
 **Para cambiar un video:** exporta dos versiones con el mismo nombre, ambas en MP4 (H.264), sin audio, de 5 a 10 segundos:
 
 - `NOMBRE-land.mp4`: 1600×900
 - `NOMBRE-port.mp4`: 720×1280
+
+Excepción: en computadora, el Coffee Spritz se muestra vertical a la derecha, así que `spritz-land.mp4` es de 1080×1920.
 
 Exporta también sus pósters `NOMBRE-land.jpg` y `NOMBRE-port.jpg` (primer cuadro). Por ejemplo:
 

@@ -133,8 +133,14 @@
 
     function loadLayer(layer) {
         var video = layerVideo(layer);
-        if (!video || !allowVideo) return;
-        var src = video.getAttribute(portraitQuery.matches ? 'data-port' : 'data-land');
+        if (!video) return;
+        var shape = portraitQuery.matches ? 'port' : 'land';
+        // Póster propio (si la capa lo trae): se ve mientras carga el video y
+        // queda fijo con "reducir movimiento" o "ahorro de datos".
+        var poster = video.getAttribute('data-poster-' + shape);
+        if (poster && video.getAttribute('poster') !== poster) video.setAttribute('poster', poster);
+        if (!allowVideo) return;
+        var src = video.getAttribute('data-' + shape);
         if (video.getAttribute('data-current') === src) return;
         video.muted = true;
         video.playsInline = true;
@@ -211,7 +217,7 @@
         var onOrientation = function () {
             layers.forEach(function (layer) {
                 var video = layerVideo(layer);
-                if (video && video.getAttribute('data-current')) {
+                if (video && (video.getAttribute('data-current') || video.getAttribute('poster'))) {
                     loadLayer(layer);
                     if (layer.classList.contains('is-active')) playLayer(layer);
                 }
