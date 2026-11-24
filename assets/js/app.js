@@ -508,15 +508,144 @@
                 link.pathname.replace(/\/index\.html$/, '/') === window.location.pathname.replace(/\/index\.html$/, '/');
             if (!samePage) return;
 
-            var target;
-            try { target = document.querySelector(hash); } catch (err) { return; }
-            if (!target) return;
+            var name = hash.slice(1);
+            if (!/^[\w-]+$/.test(name)) return;
+            var target = document.getElementById(name);
+
+            // Anclas de pestañas (#caliente, #helado): abre la pestaña y baja a ella.
+            if (!target) {
+                var tab = document.querySelector('[data-tab-hash~="' + name + '"]');
+                var group = tab && tab.closest('[data-tabs]');
+                if (!group) return;
+                e.preventDefault();
+                activateTab(group, tab, false);
+                window.scrollTo({ top: absTop(group) - stickyOffset() - 24, behavior: reduceMotion ? 'auto' : 'smooth' });
+                if (history.replaceState) history.replaceState(null, '', hash);
+                return;
+            }
 
             e.preventDefault();
             scrollToEl(target, true);
             if (history.replaceState) history.replaceState(null, '', hash);
         });
     });
+
+
+    // -----------------------------------------------
+    // Destacados del menú: un video a la vez, con transición.
+    // Avanza solo cada 7 s; se pausa al pasar el puntero, al
+    // enfocar o cuando el bloque no está en pantalla.
+    // -----------------------------------------------
+
+    var featured = document.querySelector('.featured');
+
+    if (featured) {
+        var fTabs = Array.prototype.slice.call(featured.querySelectorAll('.featured-tab'));
+        var fSlides = Array.prototype.slice.call(featured.querySelectorAll('.featured-slide'));
+        var fVideos = Array.prototype.slice.call(featured.querySelectorAll('.featured-video'));
+        var F_DURATION = 7000;
+        var fIndex = 0;
+        var fTimer = null;
+        var fVisible = !hasIO;
+        var fHold = false;
+
+        featured.style.setProperty('--featured-duration', F_DURATION + 'ms');
+
+        var fLoad = function (i) {
+            var v = fVideos[i];
+            if (!v || !allowVideo || v.getAttribute('src')) return;
+            v.muted = true;
+            v.playsInline = true;
+            v.src = v.getAttribute('data-src');
+        };
+
+        var fPlay = function () {
+            fVideos.forEach(function (v, i) {
+                if (i === fIndex && fVisible && allowVideo && !document.hidden) {
+                    fLoad(i);
+                    var p = v.play();
+                    if (p && p.catch) p.catch(function () {});
+                } else {
+                    v.pause();
+                }
+            });
+        };
+
+        var fSchedule = function () {
+            clearTimeout(fTimer);
+            featured.classList.remove('is-running');
+            if (reduceMotion || !fVisible || fHold || document.hidden) return;
+            void featured.offsetWidth; // reinicia la barra de progreso
+            featured.classList.add('is-running');
+            fTimer = setTimeout(function () { fShow((fIndex + 1) % fTabs.length, false); }, F_DURATION);
+        };
+
+        var fShow = function (i, focus) {
+            fIndex = i;
+            fTabs.forEach(function (t, k) {
+                var on = k === i;
+                t.classList.toggle('is-active', on);
+                t.setAttribute('aria-selected', String(on));
+                t.tabIndex = on ? 0 : -1;
+            });
+            fSlides.forEach(function (s, k) {
+                var on = k === i;
+                s.classList.toggle('is-active', on);
+                if (on) {
+                    s.removeAttribute('aria-hidden');
+                    s.removeAttribute('inert');
+                } else {
+                    s.setAttribute('aria-hidden', 'true');
+                    s.setAttribute('inert', '');
+                }
+            });
+            fVideos.forEach(function (v, k) { v.classList.toggle('is-active', k === i); });
+            if (fVisible) fLoad((i + 1) % fVideos.length); // la siguiente queda lista
+            fPlay();
+            fSchedule();
+            if (focus) fTabs[i].focus();
+        };
+
+        fTabs.forEach(function (t, i) {
+            t.addEventListener('click', function () { fShow(i, false); });
+            t.addEventListener('keydown', function (e) {
+                var n = null;
+                if (e.key === 'ArrowRight') n = (i + 1) % fTabs.length;
+                if (e.key === 'ArrowLeft') n = (i - 1 + fTabs.length) % fTabs.length;
+                if (n !== null) {
+                    e.preventDefault();
+                    fShow(n, true);
+                }
+            });
+        });
+
+        // Quien está leyendo o eligiendo no debería ver cambiar el producto.
+        featured.addEventListener('mouseenter', function () { fHold = true; fSchedule(); });
+        featured.addEventListener('mouseleave', function () { fHold = false; fSchedule(); });
+        featured.addEventListener('focusin', function () { fHold = true; fSchedule(); });
+        featured.addEventListener('focusout', function (e) {
+            if (!featured.contains(e.relatedTarget)) {
+                fHold = false;
+                fSchedule();
+            }
+        });
+
+        if (hasIO) {
+            new IntersectionObserver(function (entries) {
+                fVisible = entries[0].isIntersecting;
+                if (fVisible) fLoad((fIndex + 1) % fVideos.length);
+                fPlay();
+                fSchedule();
+            }, { threshold: 0.35 }).observe(featured);
+        }
+
+        document.addEventListener('visibilitychange', function () {
+            fPlay();
+            fSchedule();
+        });
+
+        fShow(0, false);
+    }
 
 
     // -----------------------------------------------

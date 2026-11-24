@@ -25,8 +25,8 @@ Luego abre <http://localhost:8000>.
 ## Estructura
 
 ```
-index.html                  Inicio: portada, Bienvenidos, La barra, Iced latte, Coffee Spritz, Visítanos (3 sucursales), Momentos
-menu.html                   Carta completa (transcrita del menú oficial en PDF)
+index.html                  Inicio (historia de la marca): portada, Nuestra historia, Origen y calidad, Un plan de todos los días, Visítanos (3 sucursales), Momentos
+menu.html                   Destacados en video + carta completa (transcrita del menú oficial en PDF)
 assets/css/styles.css       Sistema de diseño (colores, tipografía, animaciones)
 assets/js/app.js            Animaciones, videos, horarios de sucursales e interacciones
 assets/video/               Videos de fondo: NOMBRE-land.mp4 (16:9) y NOMBRE-port.mp4 (9:16)
@@ -51,6 +51,24 @@ Si cambia un horario, hay que actualizarlo en tres lugares:
 Los enlaces de Google Maps abren las fichas oficiales de cada sucursal.
 
 **Para probar el estado a otra hora**, abre `index.html?hora=2026-11-22T21:30` (hora de Managua).
+
+## Historia de la marca (inicio)
+
+La portada cuenta la historia y la filosofía de Momoto; los productos viven en el menú.
+
+- **Nuestra historia:** nació en plena pandemia, en un garaje, con una moka italiana y pedidos a domicilio; hoy son tres sucursales y doce colaboradores. Incluye la mención de Kevin Castillo Canales en el [30 Under 30 de Forbes Centroamérica 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/), de donde salen esos datos.
+- **Origen y calidad:** trabajo directo con fincas de Nicaragua, asesoría a productores (nuevas variedades, Taza de Excelencia) y la ficha de origen.
+- **Un plan de todos los días:** frases de los propios Reels de Momoto ("El café no siempre se trata de energía…", "Si llueve. Si hace frío…").
+
+## Destacados del menú
+
+Arriba de la carta hay un bloque con tres productos (Coffee Spritz, Iced Latte y Latte): un video a la vez, con transición, que avanza solo cada 7 segundos. Se detiene al pasar el puntero o al tocar un producto, y se pausa cuando no está en pantalla. Cada producto tiene su precio y un enlace a su lugar en la carta.
+
+Para cambiar un producto destacado:
+
+1. Exporta el video en 4:5 (720×900), MP4 H.264, sin audio, de 4 a 10 segundos: `assets/video/feat-NOMBRE.mp4`.
+2. Guarda su primer cuadro como póster: `assets/img/feat-NOMBRE.jpg`.
+3. En `menu.html`, dentro de `<section class="featured">`, cambia el video, el texto (nombre, descripción, precio), el enlace y el nombre de su pestaña.
 
 ## Carta
 
@@ -86,20 +104,18 @@ Todo el material viene del álbum oficial de Momoto.
 | Sección | Video | Contenido |
 | --- | --- | --- |
 | Portada | `hero` | Vertido del AeroPress |
-| Bienvenidos | `bienvenida` | Latte y agua en bandeja |
-| La barra | `barra` | V60 |
-| Iced latte | `frios` | Iced latte entre vasos de Momoto |
-| Coffee Spritz | `spritz` | Copa de Coffee Spritz mientras se revuelve |
+| Nuestra historia | `historia` | V60 |
+| Origen y calidad | `origen` | Llega la bandeja y el cliente lee la ficha de origen |
+| Un plan de todos los días | `diario` | Montaje: un sorbo, la laptop, una persona sentada |
 | Visítanos | `visitanos` | Vaso de Momoto saliendo por la puerta |
+| Menú · Destacados | `feat-spritz`, `feat-iced`, `feat-latte` | Coffee Spritz, Iced Latte y Latte (4:5) |
 
-Cada tramo se eligió sin los textos sobreimpresos del Reel original. En el Coffee Spritz se unieron los dos únicos tramos limpios (0.00–1.12 s y 5.55–6.42 s del video), en cámara lenta a 0.4×.
+Cada tramo se eligió sin los textos sobreimpresos de los Reels. **Colorimetría:** todos los videos comparten el mismo tono cálido y natural. El Coffee Spritz venía mucho más saturado (saturación media 0.75 frente a 0.25–0.54 del resto), así que se corrigió para igualarlo (`eq=saturation=0.72:gamma=1.2:contrast=0.95` + un toque cálido). Si se agregan videos nuevos, conviene mantener ese mismo tono.
 
 **Para cambiar un video:** exporta dos versiones con el mismo nombre, ambas en MP4 (H.264), sin audio, de 5 a 10 segundos:
 
 - `NOMBRE-land.mp4`: 1600×900
 - `NOMBRE-port.mp4`: 720×1280
-
-Excepción: en computadora, el Coffee Spritz se muestra vertical a la derecha, así que `spritz-land.mp4` es de 1080×1920.
 
 Exporta también sus pósters `NOMBRE-land.jpg` y `NOMBRE-port.jpg` (primer cuadro). Por ejemplo:
 
@@ -113,6 +129,7 @@ Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify
 
 ## Pendiente de confirmar
 
+- **Mención de Forbes con el nombre del fundador:** confirmar con Kevin que quiere que aparezca así en la portada.
 - **Licencia web de Beautifully Delicious Script**, para reemplazar la fuente alternativa.
 - **Ortografía en la carta impresa:** en la web se corrigieron "Espresso Doppio", "Iced Affogato" y "mozzarella" (en el PDF dice Dopio, Affogatto y Mozarella), además de erratas en las descripciones ("huelo" → hielo, "especies" → especias). Conviene corregirlo también en el PDF.
 - **Horario de Plaza Natura en Google Maps:** la ficha indica cierre a las 8 PM, mientras que el horario real es de 8 AM a 6 PM. Conviene actualizarla desde Google Business Profile.
@@ -120,6 +137,7 @@ Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify
 ## Créditos
 
 - Fotos y videos: material oficial de Momoto Café.
-- [Swiper](https://swiperjs.com) 11.1.14, licencia MIT (`assets/vendor/swiper/LICENSE`).
+- Historia: [Forbes Centroamérica, 30 Under 30 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/) y [TN8](https://www.tn8.tv/nacionales/momoto-cafe-el-cielo-para-los-amantes-de-las-bebidas-a-base-del-grano-de-oro/).
+- [Swiper](https://swiperjs.com) 11.1.14 (galería del inicio), licencia MIT (`assets/vendor/swiper/LICENSE`).
 - Íconos: [Feather](https://feathericons.com) (MIT) y [Tabler Icons](https://tabler.io/icons) (MIT, ícono de WhatsApp).
 - Fuentes: Raleway y Ms Madi (SIL Open Font License), servidas por Google Fonts.

@@ -21,7 +21,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Ms+Madi&display=swap">
 
-    <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <script>document.documentElement.classList.add('js');</script>
@@ -91,6 +90,7 @@
 </section>
 
 <nav class="menu-nav" id="menuNav" aria-label="Secciones del menú">
+    <a href="#destacados" class="menu-nav-link" data-menu-nav="destacados">Destacados</a>
     <a href="#espresso" class="menu-nav-link" data-menu-nav="espresso">Espresso bar</a>
     <a href="#matcha" class="menu-nav-link" data-menu-nav="matcha">Matcha</a>
     <a href="#smoothies" class="menu-nav-link" data-menu-nav="smoothies">Smoothies</a>
@@ -102,6 +102,49 @@
     <a href="#ensaladas" class="menu-nav-link" data-menu-nav="ensaladas">Ensaladas y wraps</a>
     <a href="#snacks" class="menu-nav-link" data-menu-nav="snacks">Snacks</a>
 </nav>
+
+<!-- ===========================================
+     DESTACADOS: un video a la vez, con transición.
+     Para cambiar un producto: video 4:5 (720×900) en assets/video/feat-*.mp4,
+     su póster en assets/img/feat-*.jpg y su texto aquí abajo.
+     =========================================== -->
+<section class="featured" id="destacados" data-menu-section="destacados" aria-label="Productos destacados">
+    <div class="featured-inner">
+        <div class="featured-media" aria-hidden="true">
+            <video class="featured-video is-active" muted loop playsinline preload="none" poster="assets/img/feat-spritz.jpg" data-src="assets/video/feat-spritz.mp4"></video>
+            <video class="featured-video" muted loop playsinline preload="none" poster="assets/img/feat-iced.jpg" data-src="assets/video/feat-iced.mp4"></video>
+            <video class="featured-video" muted loop playsinline preload="none" poster="assets/img/feat-latte.jpg" data-src="assets/video/feat-latte.mp4"></video>
+        </div>
+        <div class="featured-body">
+            <span class="section-label">Destacados</span>
+            <div class="featured-slides">
+                <div class="featured-slide is-active" id="feat-1" role="tabpanel" aria-labelledby="feat-tab-1">
+                    <h2 class="featured-name">Coffee Spritz</h2>
+                    <p class="featured-desc">Espresso, naranja navel, Kahlúa, agua tónica y romero.</p>
+                    <p class="featured-price">C$250</p>
+                    <a class="featured-link" href="#cocteles">Ver en la carta</a>
+                </div>
+                <div class="featured-slide" id="feat-2" role="tabpanel" aria-labelledby="feat-tab-2" aria-hidden="true" inert>
+                    <h2 class="featured-name">Iced Latte</h2>
+                    <p class="featured-desc">Espresso y leche de tu elección, sobre cubos de hielo.</p>
+                    <p class="featured-price">C$125</p>
+                    <a class="featured-link" href="#helado">Ver en la carta</a>
+                </div>
+                <div class="featured-slide" id="feat-3" role="tabpanel" aria-labelledby="feat-tab-3" aria-hidden="true" inert>
+                    <h2 class="featured-name">Latte</h2>
+                    <p class="featured-desc">Espresso con leche vaporizada.</p>
+                    <p class="featured-price">C$110</p>
+                    <a class="featured-link" href="#caliente">Ver en la carta</a>
+                </div>
+            </div>
+            <div class="featured-tabs" role="tablist" aria-label="Productos destacados">
+                <button class="featured-tab is-active" role="tab" id="feat-tab-1" aria-selected="true" aria-controls="feat-1"><span class="featured-num">01</span>Coffee Spritz<span class="featured-bar"><span></span></span></button>
+                <button class="featured-tab" role="tab" id="feat-tab-2" aria-selected="false" aria-controls="feat-2" tabindex="-1"><span class="featured-num">02</span>Iced Latte<span class="featured-bar"><span></span></span></button>
+                <button class="featured-tab" role="tab" id="feat-tab-3" aria-selected="false" aria-controls="feat-3" tabindex="-1"><span class="featured-num">03</span>Latte<span class="featured-bar"><span></span></span></button>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ===========================================
      CARTA (transcrita del menú oficial en PDF)
@@ -629,19 +672,15 @@
                 <p class="menu-section-subtitle" data-reveal data-delay="2">Signature cocktails</p>
             </header>
 
-            <article class="menu-feature menu-feature--spritz" data-reveal>
-                <div class="menu-feature-media">
-                    <img src="assets/img/galeria-5.jpg" alt="Coffee Spritz con naranja servido en copa" loading="lazy" decoding="async" width="900" height="1125">
-                </div>
-                <div class="menu-feature-body">
-                    <span class="menu-feature-tag">Signature cocktail <span aria-hidden="true">★</span></span>
-                    <h3 class="menu-feature-name">Coffee Spritz</h3>
-                    <p class="menu-feature-desc">Espresso, naranja navel, Kahlúa, agua tónica y romero.</p>
-                    <p class="menu-feature-price">C$250</p>
-                </div>
-            </article>
-
             <ul class="menu-list">
+                <li class="menu-item">
+                    <div class="menu-item-head">
+                        <h3 class="menu-item-name">Coffee Spritz <span class="menu-mark" title="Recomendado"><span aria-hidden="true">★</span><span class="sr-only">(recomendado)</span></span></h3>
+                        <span class="menu-item-dots" aria-hidden="true"></span>
+                        <span class="menu-item-price">C$250</span>
+                    </div>
+                    <p class="menu-item-desc">Espresso, naranja navel, Kahlúa, agua tónica y romero.</p>
+                </li>
                 <li class="menu-item">
                     <div class="menu-item-head">
                         <h3 class="menu-item-name">Carajillo</h3>
@@ -1013,26 +1052,6 @@
     </div>
 </div>
 
-<section class="menu-slider-wrap">
-    <div class="section-head">
-        <span class="section-label" data-reveal>Del mostrador</span>
-        <h2 class="section-title" data-split-chars>Antojos</h2>
-    </div>
-    <div class="gallery-slider swiper" data-swiper data-reveal data-delay="2">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="assets/img/galeria-2.jpg" alt="Iced latte en vaso de Momoto Café sobre la barra de mármol" loading="lazy" decoding="async" width="900" height="1125"></div>
-            <div class="swiper-slide"><img src="assets/img/galeria-1.jpg" alt="Café de filtro servido en taza sobre una tabla de madera y mármol" loading="lazy" decoding="async" width="900" height="1125"></div>
-            <div class="swiper-slide"><img src="assets/img/galeria-5.jpg" alt="Coffee Spritz con naranja servido en copa" loading="lazy" decoding="async" width="900" height="1125"></div>
-            <div class="swiper-slide"><img src="assets/img/galeria-3.jpg" alt="Latte con arte latte y vaso de agua sobre una bandeja de madera" loading="lazy" decoding="async" width="900" height="1125"></div>
-            <div class="swiper-slide"><img src="assets/img/galeria-6.jpg" alt="Barista preparando café en AeroPress" loading="lazy" decoding="async" width="900" height="1125"></div>
-            <div class="swiper-slide"><img src="assets/img/galeria-8.jpg" alt="Iced latte rodeado de vasos negros de Momoto Café" loading="lazy" decoding="async" width="900" height="1125"></div>
-        </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-
 </main>
 
 
@@ -1100,7 +1119,6 @@
     </div>
 </footer>
 
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>
