@@ -155,7 +155,8 @@
         if (p && p.catch) p.catch(function () {});
     }
 
-    function activateLayer(id) {
+    // autoplay = false: cambia la capa sin reproducirla (queda en su póster).
+    function activateLayer(id, autoplay) {
         if (activeLayer === id) return;
         activeLayer = id;
 
@@ -166,7 +167,7 @@
             if (isActive) {
                 loadLayer(layer);
                 loadLayer(layers[i + 1]); // la siguiente queda lista
-                playLayer(layer);
+                if (autoplay !== false) playLayer(layer);
             } else {
                 var video = layerVideo(layer);
                 if (video) video.pause();
@@ -175,42 +176,97 @@
     }
 
     if (sections.length && layers.length) {
-        // Sin IntersectionObserver, arranca el primero. Con él, el primer aviso
-        // (inmediato) activa la sección visible: si se entra con un ancla, no se
-        // descarga de más el video de la portada.
+        // Sin IntersectionObserver, arranca el primero. Con él, manda la
+        // sección visible (ver updateStage).
         if (!hasIO) activateLayer(sections[0].getAttribute('data-section'));
 
-        if (hasIO) {
-            var ratios = {};
-            var sectionObserver = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    ratios[entry.target.getAttribute('data-section')] =
-                        entry.isIntersecting ? entry.intersectionRatio : 0;
-                });
+        // false mientras una sección sólida tapa el escenario (visión, galería,
+        // footer): ahí el video queda en pausa aunque se vuelva a la pestaña.
+        var stageOn = true;
 
-                // Manda la sección más visible.
+        var pauseAll = function () {
+            layers.forEach(function (layer) {
+                var video = layerVideo(layer);
+                if (video) video.pause();
+            });
+        };
+
+        // Primera sección con video en la dirección del scroll (o null).
+        var upcomingSection = function (goingDown) {
+            var found = null;
+            sections.forEach(function (section) {
+                var top = section.getBoundingClientRect().top;
+                if (goingDown ? (top > 0 && !found) : top < 0) found = section;
+            });
+            return found;
+        };
+
+        if (hasIO) {
+            var lastY = window.pageYOffset;
+
+            // Al entrar con un ancla (index.html#visitanos), el primer aviso llega
+            // un instante antes de que el navegador salte: se espera al salto para
+            // no activar (ni descargar) el video de la portada.
+            var anchorTarget = window.location.hash.length > 1
+                ? document.getElementById(window.location.hash.slice(1)) : null;
+            var waitForAnchor = !!anchorTarget && absTop(anchorTarget) > 0;
+
+            var updateStage = function () {
+                if (waitForAnchor && window.pageYOffset < 1) return;
+
+                var y = window.pageYOffset;
+                var goingDown = y >= lastY;
+                lastY = y;
+
+                // Proporción visible de cada sección, medida en este momento.
+                var vh = window.innerHeight;
+                var ratios = {};
                 var best = null;
                 var bestRatio = 0;
-                Object.keys(ratios).forEach(function (key) {
-                    if (ratios[key] > bestRatio) {
-                        bestRatio = ratios[key];
-                        best = key;
+                sections.forEach(function (section) {
+                    var id = section.getAttribute('data-section');
+                    var r = section.getBoundingClientRect();
+                    var visible = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+                    ratios[id] = visible > 0 && r.height > 0 ? visible / r.height : 0;
+                    if (ratios[id] > bestRatio) {
+                        bestRatio = ratios[id];
+                        best = id;
                     }
                 });
 
                 if (best && bestRatio >= 0.3) {
+                    // Manda la sección más visible.
+                    stageOn = true;
                     activateLayer(best);
                     playLayer(layers.filter(function (l) { return l.getAttribute('data-layer') === best; })[0]);
                 } else if (bestRatio < 0.08) {
-                    // Ninguna sección con video a la vista (galería, footer): pausa.
-                    layers.forEach(function (layer) {
-                        var video = layerVideo(layer);
-                        if (video) video.pause();
-                    });
+                    // Ninguna sección con video a la vista (visión, galería, footer): pausa
+                    // y deja lista, en pausa, la capa de la sección hacia la que se va:
+                    // así no se asoma el video anterior.
+                    stageOn = false;
+                    pauseAll();
+                    var upcoming = upcomingSection(goingDown);
+                    if (upcoming) activateLayer(upcoming.getAttribute('data-section'), false);
+                } else if (!(ratios[activeLayer] > 0)) {
+                    // Solo asoma una sección y la capa activa quedó fuera de vista
+                    // (por ejemplo, tras saltar a un ancla): su póster, sin reproducir.
+                    stageOn = false;
+                    pauseAll();
+                    activateLayer(best, false);
                 }
-            }, { threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1] });
+            };
 
+            var sectionObserver = new IntersectionObserver(updateStage, {
+                threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1]
+            });
             sections.forEach(function (section) { sectionObserver.observe(section); });
+
+            if (waitForAnchor) {
+                window.addEventListener('load', function () {
+                    waitForAnchor = false;
+                    updateStage();
+                });
+            }
         }
 
         // Si cambia la orientación, cambia el corte del video (16:9 o 9:16).
@@ -219,7 +275,7 @@
                 var video = layerVideo(layer);
                 if (video && (video.getAttribute('data-current') || video.getAttribute('poster'))) {
                     loadLayer(layer);
-                    if (layer.classList.contains('is-active')) playLayer(layer);
+                    if (stageOn && layer.classList.contains('is-active')) playLayer(layer);
                 }
             });
         };
@@ -232,7 +288,7 @@
                 var video = layerVideo(layer);
                 if (!video) return;
                 if (document.hidden) video.pause();
-                else if (layer.classList.contains('is-active')) playLayer(layer);
+                else if (stageOn && layer.classList.contains('is-active')) playLayer(layer);
             });
         });
     }
