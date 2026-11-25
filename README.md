@@ -56,7 +56,10 @@ Los enlaces de Google Maps abren las fichas oficiales de cada sucursal.
 
 La portada cuenta la historia, la visión y la filosofía de Momoto; los productos viven en el menú.
 
-- **Nuestra historia:** nació en plena pandemia, en un garaje, con una moka italiana y pedidos a domicilio; hoy son tres sucursales y doce colaboradores. Incluye la mención de Kevin Castillo Canales en el [30 Under 30 de Forbes Centroamérica 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/), de donde salen esos datos.
+- **Nuestra historia:** nació en plena pandemia, en un garaje, con una moka italiana y pedidos a domicilio; hoy son tres sucursales y doce colaboradores (datos de la nota de Forbes). Cierra con los reconocimientos, el más reciente primero:
+  - Momoto Café, ganador de los [Connecta Awards Nicaragua 2026](https://www.myt.connectab2b.com/post/connecta-awards-nicaragua-2026-celebr%C3%B3-el-liderazgo-y-la-excelencia-del-sector-empresarial) en la categoría Iniciativa Pyme (23 de noviembre de 2026; organizan ConnectaB2B y Mercados y Tendencias).
+  - Kevin Castillo Canales en el [30 Under 30 de Forbes Centroamérica 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/).
+  - Para agregar otro, copia un `<li>` dentro de `<ul class="panel-press">` en `index.html` y ponlo de primero. El premio también está en los datos estructurados (`"award"` en el JSON-LD del `<head>`).
 - **Nuestra visión:** un panel más, con video de fondo, que sale del pitch de Kevin adaptado para clientes:
   - El titular: "De Nicaragua para el mundo".
   - La idea central: "Nicaragua no solo puede exportar granos de café. Puede exportar una experiencia completa."
@@ -146,7 +149,7 @@ Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify
 ## Créditos
 
 - Fotos y videos: material oficial de Momoto Café.
-- Historia: [Forbes Centroamérica, 30 Under 30 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/) y [TN8](https://www.tn8.tv/nacionales/momoto-cafe-el-cielo-para-los-amantes-de-las-bebidas-a-base-del-grano-de-oro/).
+- Historia: [Forbes Centroamérica, 30 Under 30 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/), [Mercados y Tendencias, Connecta Awards Nicaragua 2026](https://www.myt.connectab2b.com/post/connecta-awards-nicaragua-2026-celebr%C3%B3-el-liderazgo-y-la-excelencia-del-sector-empresarial) y [TN8](https://www.tn8.tv/nacionales/momoto-cafe-el-cielo-para-los-amantes-de-las-bebidas-a-base-del-grano-de-oro/).
 - [Swiper](https://swiperjs.com) 11.1.14 (galería del inicio), licencia MIT (`assets/vendor/swiper/LICENSE`).
 - Íconos: [Feather](https://feathericons.com) (MIT) y [Tabler Icons](https://tabler.io/icons) (MIT, ícono de WhatsApp).
 - Fuentes: Raleway y Ms Madi (SIL Open Font License), servidas por Google Fonts.
