@@ -57,11 +57,11 @@ Los enlaces de Google Maps abren las fichas oficiales de cada sucursal.
 La portada cuenta la historia, la visión y la filosofía de Momoto; los productos viven en el menú.
 
 - **Nuestra historia:** nació en plena pandemia, en un garaje, con una moka italiana y pedidos a domicilio; hoy son tres sucursales y doce colaboradores. Incluye la mención de Kevin Castillo Canales en el [30 Under 30 de Forbes Centroamérica 2026](https://forbescentroamerica.com/2026/07/07/estos-son-los-30-under-30-forbes-centroamerica-2026/), de donde salen esos datos.
-- **Nuestra visión:** pantalla tipográfica sobre negro, sin video. Sale del pitch de Kevin, adaptado para clientes:
+- **Nuestra visión:** un panel más, con video de fondo, que sale del pitch de Kevin adaptado para clientes:
+  - El titular: "De Nicaragua para el mundo".
   - La idea central: "Nicaragua no solo puede exportar granos de café. Puede exportar una experiencia completa."
   - La meta: ser la primera cadena de cafeterías nacida en Nicaragua reconocida en el mundo, creciendo con intención y sin perder la esencia.
-  - Los tres pilares: café de especialidad, espacios que conectan y una misma experiencia en cada sucursal.
-  - Las secciones siguientes desarrollan cada pilar: Origen y calidad, Nuestros espacios y Visítanos.
+  - Los tres pilares, solo con su nombre: café de especialidad, espacios que conectan y una misma experiencia. Cada uno se desarrolla en el panel siguiente: Origen y calidad, Nuestros espacios y Visítanos.
   - Los datos de mercado y el modelo de expansión del pitch son para inversionistas y no van en la web pública.
   - Para compartirla con aliados: `index.html#vision`.
 - **Origen y calidad:** trabajo directo con fincas de Nicaragua, asesoría a productores (nuevas variedades, Taza de Excelencia) y la ficha de origen.
@@ -112,12 +112,11 @@ Todo el material viene del álbum oficial de Momoto.
 | --- | --- | --- |
 | Portada | `hero` | Vertido del AeroPress |
 | Nuestra historia | `historia` | V60 |
+| Nuestra visión | `vision` | Toma cenital: café vertido sobre hielo entre vasos Momoto. En horizontal va girada 90° (es una toma desde arriba), así conserva la resolución y el vaso queda a la derecha del texto |
 | Origen y calidad | `origen` | Llega la bandeja y el cliente lee la ficha de origen |
 | Nuestros espacios | `diario` | Montaje: un sorbo, la laptop, una persona sentada |
 | Visítanos | `visitanos` | Vaso de Momoto saliendo por la puerta |
 | Menú · Destacados | `feat-spritz`, `feat-iced`, `feat-latte` | Coffee Spritz, Iced Latte y Latte (4:5) |
-
-Nuestra visión no lleva video: es negra y el video de fondo se pausa detrás. Mientras la tapa, queda lista (en pausa) la capa de la sección siguiente.
 
 Cada tramo se eligió sin los textos sobreimpresos de los Reels. **Colorimetría:** todos los videos comparten el mismo tono cálido y natural. El Coffee Spritz venía mucho más saturado (saturación media 0.75 frente a 0.25–0.54 del resto), así que se corrigió para igualarlo (`eq=saturation=0.72:gamma=1.2:contrast=0.95` + un toque cálido). Si se agregan videos nuevos, conviene mantener ese mismo tono.
 

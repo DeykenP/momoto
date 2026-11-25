@@ -180,8 +180,8 @@
         // sección visible (ver updateStage).
         if (!hasIO) activateLayer(sections[0].getAttribute('data-section'));
 
-        // false mientras una sección sólida tapa el escenario (visión, galería,
-        // footer): ahí el video queda en pausa aunque se vuelva a la pestaña.
+        // false mientras una sección sólida tapa el escenario (galería, footer):
+        // ahí el video queda en pausa aunque se vuelva a la pestaña.
         var stageOn = true;
 
         var pauseAll = function () {
@@ -240,7 +240,7 @@
                     activateLayer(best);
                     playLayer(layers.filter(function (l) { return l.getAttribute('data-layer') === best; })[0]);
                 } else if (bestRatio < 0.08) {
-                    // Ninguna sección con video a la vista (visión, galería, footer): pausa
+                    // Ninguna sección con video a la vista (galería, footer): pausa
                     // y deja lista, en pausa, la capa de la sección hacia la que se va:
                     // así no se asoma el video anterior.
                     stageOn = false;

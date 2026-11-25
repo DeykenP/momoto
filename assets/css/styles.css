@@ -636,6 +636,7 @@ button {
 
 .stage-layer[data-layer="hero"] { background-image: url('../img/hero-land.jpg'); }
 .stage-layer[data-layer="historia"] { background-image: url('../img/historia-land.jpg'); }
+.stage-layer[data-layer="vision"] { background-image: url('../img/vision-land.jpg'); }
 .stage-layer[data-layer="origen"] { background-image: url('../img/origen-land.jpg'); }
 .stage-layer[data-layer="diario"] { background-image: url('../img/diario-land.jpg'); }
 .stage-layer[data-layer="visitanos"] { background-image: url('../img/visitanos-land.jpg'); }
@@ -643,6 +644,7 @@ button {
 @media (max-aspect-ratio: 1/1) {
     .stage-layer[data-layer="hero"] { background-image: url('../img/hero-port.jpg'); }
     .stage-layer[data-layer="historia"] { background-image: url('../img/historia-port.jpg'); }
+    .stage-layer[data-layer="vision"] { background-image: url('../img/vision-port.jpg'); }
     .stage-layer[data-layer="origen"] { background-image: url('../img/origen-port.jpg'); }
     .stage-layer[data-layer="diario"] { background-image: url('../img/diario-port.jpg'); }
     .stage-layer[data-layer="visitanos"] { background-image: url('../img/visitanos-port.jpg'); }
@@ -841,6 +843,7 @@ button {
     font-style: italic;
     line-height: 1.7;
     color: var(--text-strong);
+    text-wrap: balance;
 }
 
 .panel-ctas {
@@ -902,6 +905,40 @@ button {
 .panel-press a:hover {
     border-color: var(--text-strong);
     color: var(--text-muted);
+}
+
+/* Panel con titular largo (Nuestra visión): más ancho para que no se parta de más */
+.panel--wide .panel-content {
+    max-width: 940px;
+}
+
+/* Pilares de la visión: fila compacta bajo el texto del panel */
+.pillars {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 40rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    list-style: none;
+}
+
+.pillar {
+    font-size: 0.62rem;
+    font-weight: 600;
+    line-height: 1.7;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-strong);
+}
+
+.pillar-num {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    color: var(--text-subtle);
 }
 
 
@@ -1060,105 +1097,6 @@ button {
     background: var(--bone);
     border-color: var(--bone);
     color: var(--black);
-}
-
-
-/* ===========================================
-   NUESTRA VISIÓN (manifiesto tipográfico)
-   Pantalla completa sobre negro, sin video.
-   =========================================== */
-
-.manifesto {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    min-height: 100svh;
-    padding: clamp(6rem, 11vw, 9rem) var(--gutter);
-    background: var(--black);
-    text-align: center;
-}
-
-.manifesto-inner {
-    width: 100%;
-    max-width: 1040px;
-    margin: 0 auto;
-}
-
-.manifesto-statement {
-    max-width: 24em;
-    margin: 0 auto;
-    font-size: clamp(1.6rem, 1.23rem + 1.52vw, 2.6rem);
-    font-weight: 300;
-    line-height: 1.38;
-    color: var(--text-strong);
-    text-wrap: balance;
-}
-
-.manifesto-line {
-    display: block;
-}
-
-.manifesto-line--quiet {
-    color: rgba(244, 242, 237, 0.5);
-}
-
-.manifesto-text {
-    max-width: 35rem;
-    margin: 2.25rem auto 0;
-    font-size: 0.95rem;
-    line-height: 1.95;
-    color: var(--text-muted);
-    text-wrap: pretty;
-}
-
-.pillars {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.75rem, 4vw, 3.5rem);
-    margin-top: clamp(3.5rem, 7vw, 5.5rem);
-    list-style: none;
-    text-align: left;
-}
-
-.pillar {
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-}
-
-.pillar-num {
-    display: block;
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
-    color: var(--text-subtle);
-}
-
-.pillar-title {
-    margin-top: 1rem;
-    font-size: 0.76rem;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--text-strong);
-}
-
-.pillar-text {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    line-height: 1.8;
-    color: var(--text-muted);
-    text-wrap: pretty;
-}
-
-.manifesto-sign {
-    margin-top: clamp(3.5rem, 7vw, 5rem);
-    font-family: var(--font-script);
-    font-size: clamp(2.1rem, 3.6vw, 2.9rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--text-muted);
 }
 
 
@@ -2157,14 +2095,23 @@ button {
         padding: 7rem 1.5rem 4.5rem;
     }
 
-    .manifesto {
-        padding: 7rem 1.5rem 6rem;
-    }
-
+    /* Pilares de la visión: filas, número a la izquierda */
     .pillars {
         grid-template-columns: 1fr;
-        gap: 2.25rem;
-        text-align: center;
+        gap: 0;
+        padding-top: 0;
+    }
+
+    .pillar {
+        display: flex;
+        align-items: baseline;
+        gap: 1.25rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .pillar-num {
+        margin: 0;
     }
 
     .panel-title {
