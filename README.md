@@ -22,16 +22,23 @@ python3 -m http.server 8000
 
 Luego abre <http://localhost:8000>.
 
+Para verlo exactamente como en Cloudflare (direcciones como `/menu` y la página 404), usa `npx wrangler dev` y abre <http://localhost:8787>.
+
 ## Estructura
 
 ```
 index.html                  Inicio (historia de la marca): portada, Nuestra historia, Nuestra visión, Origen y calidad, Nuestros espacios, Visítanos (3 sucursales), Momentos
 menu.html                   Destacados en video + carta completa (transcrita del menú oficial en PDF)
+404.html                    Página para direcciones que no existen
 assets/css/styles.css       Sistema de diseño (colores, tipografía, animaciones)
 assets/js/app.js            Animaciones, videos, horarios de sucursales e interacciones
 assets/video/               Videos de fondo: NOMBRE-land.mp4 (16:9) y NOMBRE-port.mp4 (9:16)
 assets/img/                 Pósters, fotos, logo (blanco y negro), favicon e imagen para redes (og.jpg)
 assets/vendor/swiper/       Swiper 11.1.14 (galería)
+wrangler.jsonc              Configuración de Cloudflare (ver "Publicar en Cloudflare")
+.assetsignore               Lo que está en el repositorio pero no se publica
+_headers                    Encabezados de seguridad y caché
+cloudflare/worker.js        Sirve los videos por partes para que se reproduzcan en iPhone
 ```
 
 ## Sucursales y horarios
@@ -148,9 +155,36 @@ Exporta también sus pósters `NOMBRE-land.jpg` y `NOMBRE-port.jpg` (primer cuad
 ffmpeg -i original.mp4 -ss 3 -t 8 -an -vf "crop=iw:iw*9/16,scale=1600:900" -c:v libx264 -crf 22 -preset slow -movflags +faststart -pix_fmt yuv420p hero-land.mp4
 ```
 
-## Publicar
+## Publicar en Cloudflare
 
-Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify o Vercel. Al publicar, cambia `og:image` en ambos HTML por la URL absoluta de `og.jpg`.
+El sitio se publica gratis en Cloudflare Workers. No hay que compilar nada: Cloudflare sirve los archivos del repositorio tal cual.
+
+**Cómo está armado**
+
+- `wrangler.jsonc`: la configuración. Su nombre, `momoto-cafe`, tiene que ser igual al del proyecto en el panel de Cloudflare.
+- `.assetsignore`: lo que no se publica (este README, la configuración y el código del Worker).
+- `cloudflare/worker.js`: atiende solo los videos. Safari en iPhone pide los videos por partes, y sin esto Cloudflare responde el archivo completo y el video no se reproduce. El resto del sitio no pasa por el Worker.
+- `_headers`: seguridad básica y caché de un día para las fotos.
+- Direcciones: `/menu` abre el menú, y los enlaces a `menu.html` siguen funcionando (redirigen a `/menu`). Las direcciones que no existen muestran `404.html`.
+
+**Primera publicación**
+
+1. En el panel de Cloudflare: **Workers & Pages** → **Create application** → **GitHub** → elige `DeykenP/momoto`.
+2. Configura:
+   - Nombre del proyecto: `momoto-cafe`.
+   - Rama: `claude/ecstatic-cerf-9cipl1`. Por ahora es la única; si después crean `main`, se cambia en **Settings** → **Build**.
+   - Comando de build: vacío.
+   - Comando de deploy: `npx wrangler deploy`, el que viene por defecto.
+3. **Save and Deploy**. El sitio queda en una dirección `momoto-cafe.….workers.dev`, y cada cambio que se sube a esa rama se publica solo.
+
+**Dominio propio**
+
+1. El dominio tiene que estar en la misma cuenta de Cloudflare. Un .com se puede comprar ahí mismo. Si se compra en otro lado (por ejemplo, un .com.ni), se agrega como sitio en Cloudflare y se cambian sus nameservers por los que indique Cloudflare.
+2. En el Worker: **Settings** → **Domains & Routes** → **Add** → **Custom Domain**, escribe el dominio (por ejemplo, `momotocafenic.com`) y **Add Custom Domain**. Repite con `www.momotocafenic.com`. Cloudflare crea solo los registros DNS y el certificado de seguridad.
+3. Con el dominio funcionando, cambia `og:image` en `index.html` y `menu.html` por la URL absoluta de `og.jpg` (es la imagen que se ve al compartir el enlace).
+4. Da de baja el proyecto de Vercel: su plan gratis no permite sitios comerciales.
+
+**Costos:** el plan gratis alcanza. Las páginas, fotos y demás archivos no tienen límite de visitas. Solo los videos pasan por el Worker, que tiene 100,000 pedidos gratis al día: un café usa una fracción. Si algún día no alcanzara, el plan pagado de Workers cuesta US$5 al mes.
 
 ## Pendiente de confirmar
 

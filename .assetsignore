@@ -1,0 +1,11 @@
+# Archivos del repositorio que no son parte del sitio: Cloudflare no los publica.
+README.md
+wrangler.jsonc
+cloudflare/
+.assetsignore
+.gitignore
+.git/
+.github/
+.wrangler/
+node_modules/
+.DS_Store

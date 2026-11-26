@@ -1,0 +1,13 @@
+# Encabezados que Cloudflare agrega a las respuestas del sitio (este archivo no se publica).
+# Cada bloque: una ruta y, debajo y con sangría, los encabezados que lleva.
+
+# Seguridad básica para todo el sitio.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+
+# Las fotos cambian poco: el navegador las guarda un día en vez de volver a pedirlas en cada visita.
+# (Los videos pasan por el Worker y sus encabezados están en cloudflare/worker.js.)
+/assets/img/*
+  Cache-Control: public, max-age=86400

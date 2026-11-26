@@ -1,0 +1,4 @@
+# Archivos locales de Cloudflare (wrangler dev) y de Node
+.wrangler/
+node_modules/
+.DS_Store

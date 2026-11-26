@@ -1,0 +1,20 @@
+// Cloudflare Workers: publica este repositorio como sitio estático (gratis, sin compilar nada).
+// - Lo que está en el repositorio pero no es parte del sitio se excluye en .assetsignore.
+// - Solo los videos pasan por el Worker (cloudflare/worker.js), para que se reproduzcan en iPhone.
+// - El nombre debe coincidir con el del proyecto en el panel de Cloudflare.
+// Guía para publicar: README.md, sección "Publicar en Cloudflare".
+{
+  "name": "momoto-cafe",
+  "main": "cloudflare/worker.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    // /menu sirve menu.html; los enlaces a menu.html redirigen a /menu (siguen funcionando).
+    "html_handling": "auto-trailing-slash",
+    // Direcciones que no existen: muestra 404.html.
+    "not_found_handling": "404-page",
+    // Solo estas rutas pasan por el Worker; todo lo demás lo sirve Cloudflare directamente.
+    "run_worker_first": ["/assets/video/*"]
+  }
+}

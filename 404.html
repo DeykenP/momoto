@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada · Momoto Café</title>
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0b0b0b">
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap">
+
+    <!-- Rutas absolutas: esta página se muestra en cualquier dirección que no exista (Cloudflare, not_found_handling). -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        .not-found {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            min-height: 100svh;
+            max-width: 820px;
+            padding: 3rem var(--gutter);
+            padding-left: clamp(1.5rem, 11vw, 11rem);
+        }
+
+        .not-found-logo {
+            width: 112px;
+            height: auto;
+            margin-bottom: clamp(3rem, 8vh, 5rem);
+        }
+    </style>
+</head>
+<body>
+
+<main class="not-found">
+    <a href="/" aria-label="Momoto Café, inicio"><img class="not-found-logo" src="/assets/img/logo-blanco.svg" alt="" width="102" height="44"></a>
+    <span class="panel-label">Error 404</span>
+    <h1 class="panel-title">Esta página no existe</h1>
+    <p class="panel-text">Puede que el enlace esté mal escrito o que la página ya no esté. Puedes volver al inicio o ver el menú.</p>
+    <div class="panel-ctas">
+        <a href="/" class="panel-cta">Volver al inicio</a>
+        <a href="/menu.html" class="panel-cta">Ver el menú</a>
+    </div>
+</main>
+
+</body>
+</html>
