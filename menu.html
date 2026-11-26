@@ -167,22 +167,51 @@
                 <p class="menu-section-subtitle" data-reveal data-delay="2">Caliente y helado</p>
             </header>
 
-            <!-- Datos tomados de la ficha de origen de la foto oficial -->
-            <article class="menu-feature menu-feature--origin" data-reveal>
+            <!-- CAFÉS DE ORIGEN
+                 Datos de las fichas de origen oficiales: una pestaña por finca; la primera es la que se ve al abrir.
+                 Para agregar un café, copia un botón .origin-tab y un .origin-panel, y cambia su id,
+                 aria-controls / aria-labelledby, data-tab-hash y el número.
+                 Enlaces directos: menu.html#fincas o, por finca, menu.html#la-esperanza (abre esa pestaña). -->
+            <article class="menu-feature menu-feature--origin" id="fincas" data-tabs data-reveal>
                 <div class="menu-feature-media">
                     <img src="assets/img/origen.jpg" alt="Ficha de origen de Momoto Café sobre una jarra de café: Nicaragua, Finca Bella Vista" loading="lazy" decoding="async" width="1000" height="1250">
                 </div>
                 <div class="menu-feature-body">
                     <span class="menu-feature-tag">Specialty coffee</span>
-                    <h3 class="menu-feature-name">Nicaragua · Bella Vista</h3>
-                    <p class="menu-feature-desc">Café de especialidad con origen trazable. Llega a la mesa con su ficha de origen.</p>
-                    <dl class="origin-specs">
-                        <dt>Variedad</dt><dd>Marsella Caturra</dd>
-                        <dt>Región</dt><dd>Matagalpa</dd>
-                        <dt>Proceso</dt><dd>Lavado</dd>
-                        <dt>Caficultor</dt><dd>Jania Arauz</dd>
-                        <dt>Finca</dt><dd>Bella Vista</dd>
-                    </dl>
+                    <h3 class="menu-feature-name">Nicaragua</h3>
+                    <p class="menu-feature-desc">Café de especialidad con origen trazable. Cada café llega a la mesa con su ficha de origen.</p>
+                    <div class="origin-tabs" role="tablist" aria-label="Fincas">
+                        <button class="origin-tab is-active" type="button" role="tab" id="tab-bella-vista" aria-selected="true" aria-controls="origen-bella-vista" data-tab-hash="bella-vista"><span class="origin-num" aria-hidden="true">01</span>Bella Vista</button>
+                        <button class="origin-tab" type="button" role="tab" id="tab-la-esperanza" aria-selected="false" aria-controls="origen-la-esperanza" data-tab-hash="la-esperanza" tabindex="-1"><span class="origin-num" aria-hidden="true">02</span>La Esperanza</button>
+                        <button class="origin-tab" type="button" role="tab" id="tab-el-cambalache" aria-selected="false" aria-controls="origen-el-cambalache" data-tab-hash="el-cambalache" tabindex="-1"><span class="origin-num" aria-hidden="true">03</span>El Cambalache</button>
+                    </div>
+                    <div class="origin-panel is-active" id="origen-bella-vista" role="tabpanel" aria-labelledby="tab-bella-vista" tabindex="0">
+                        <dl class="origin-specs">
+                            <dt>Variedad</dt><dd>Marsella Caturra</dd>
+                            <dt>Región</dt><dd>Matagalpa</dd>
+                            <dt>Proceso</dt><dd>Lavado</dd>
+                            <dt>Caficultor</dt><dd>Jania Arauz</dd>
+                            <dt>Finca</dt><dd>Bella Vista</dd>
+                        </dl>
+                    </div>
+                    <div class="origin-panel" id="origen-la-esperanza" role="tabpanel" aria-labelledby="tab-la-esperanza" tabindex="0">
+                        <dl class="origin-specs">
+                            <dt>Variedad</dt><dd>Maracaturra con Catuaí</dd>
+                            <dt>Región</dt><dd>Matagalpa</dd>
+                            <dt>Proceso</dt><dd>Natural anaeróbico</dd>
+                            <dt>Caficultor</dt><dd>Norman Torres</dd>
+                            <dt>Finca</dt><dd>La Esperanza</dd>
+                        </dl>
+                    </div>
+                    <div class="origin-panel" id="origen-el-cambalache" role="tabpanel" aria-labelledby="tab-el-cambalache" tabindex="0">
+                        <dl class="origin-specs">
+                            <dt>Variedad</dt><dd>Maracaturra</dd>
+                            <dt>Región</dt><dd>Nueva Segovia</dd>
+                            <dt>Proceso</dt><dd>Lavado</dd>
+                            <dt>Caficultor</dt><dd>Samuel Zabala</dd>
+                            <dt>Finca</dt><dd>El Cambalache</dd>
+                        </dl>
+                    </div>
                 </div>
             </article>
 

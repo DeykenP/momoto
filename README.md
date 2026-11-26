@@ -67,7 +67,7 @@ La portada cuenta la historia, la visión y la filosofía de Momoto; los product
   - Los tres pilares, solo con su nombre: café de especialidad, espacios que conectan y una misma experiencia. Cada uno se desarrolla en el panel siguiente: Origen y calidad, Nuestros espacios y Visítanos.
   - Los datos de mercado y el modelo de expansión del pitch son para inversionistas y no van en la web pública.
   - Para compartirla con aliados: `index.html#vision`.
-- **Origen y calidad:** trabajo directo con fincas de Nicaragua, asesoría a productores (nuevas variedades, Taza de Excelencia) y la ficha de origen.
+- **Origen y calidad:** trabajo directo con fincas de Nicaragua, asesoría a productores (nuevas variedades, Taza de Excelencia) y la ficha de origen. Su botón, «Conoce las fincas», lleva a las fichas de origen del menú.
 - **Nuestros espacios (Un plan de todos los días):** frases de los propios Reels de Momoto ("El café no siempre se trata de energía…", "Si llueve. Si hace frío…") y la idea de hospitalidad del pitch.
 
 ## Destacados del menú
@@ -97,6 +97,20 @@ Las marcas son las mismas del menú impreso: ★ para los recomendados de la cas
 **Para cambiar un precio**, busca el producto en `menu.html` y edita `<span class="menu-item-price">C$125</span>`. Cada producto es un bloque `<li class="menu-item">`.
 
 Los enlaces `menu.html#caliente` y `menu.html#helado` abren esa pestaña. Las demás categorías tienen su propia ancla, por ejemplo `menu.html#cocteles`.
+
+### Cafés de origen
+
+Arriba del Espresso bar está la ficha de origen, con una pestaña por finca. Los datos salen de las fichas impresas:
+
+| Finca | Región | Variedad | Proceso | Caficultor |
+| --- | --- | --- | --- | --- |
+| Bella Vista | Matagalpa | Marsella Caturra | Lavado | Jania Arauz |
+| La Esperanza | Matagalpa | Maracaturra con Catuaí | Natural anaeróbico | Norman Torres |
+| El Cambalache | Nueva Segovia | Maracaturra | Lavado | Samuel Zabala |
+
+Para agregar, quitar o cambiar un café, edita en `menu.html` el bloque `<article … id="fincas">`. Cada finca es un botón `.origin-tab` más su `.origin-panel`, y el comentario de arriba del bloque explica qué cambiar. Se ven bien hasta cuatro fincas.
+
+Enlaces directos: `menu.html#fincas` abre el menú en las fichas (ahí lleva el botón «Conoce las fincas» del inicio) y `menu.html#la-esperanza` abre directamente esa finca.
 
 ## Identidad
 
@@ -142,6 +156,9 @@ Es un sitio estático: funciona en cualquier hosting, como GitHub Pages, Netlify
 
 - **Mención de Forbes con el nombre del fundador:** confirmar con Kevin que quiere que aparezca así en la portada.
 - **Texto de Nuestra visión:** es una adaptación del pitch. Conviene que Kevin apruebe la redacción final, sobre todo la meta pública de "ser la primera cadena de cafeterías nacida en Nicaragua reconocida en el mundo".
+- **Fichas de origen:**
+  - El proceso de La Esperanza va en español en la web («Natural anaeróbico»); en la ficha impresa está en inglés («Natural Anaerobic»).
+  - La ficha de Bella Vista dice «Marsella Caturra». Si la variedad es Marsellesa, hay que corregirlo en la web y en la ficha.
 - **Licencia web de Beautifully Delicious Script**, para reemplazar la fuente alternativa.
 - **Ortografía en la carta impresa:** en la web se corrigieron "Espresso Doppio", "Iced Affogato" y "mozzarella" (en el PDF dice Dopio, Affogatto y Mozarella), además de erratas en las descripciones ("huelo" → hielo, "especies" → especias). Conviene corregirlo también en el PDF.
 - **Horario de Plaza Natura en Google Maps:** la ficha indica cierre a las 8 PM, mientras que el horario real es de 8 AM a 6 PM. Conviene actualizarla desde Google Business Profile.
